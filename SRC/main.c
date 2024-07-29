@@ -14,6 +14,52 @@ void	game_init(t_game *game, char *str)
 	game->mapname = ft_strdup(str); // freelemeyi unutma
 }
 
+char	*fc_texture(char **liner)
+{
+	int		i;
+	int		arr_len;
+	char	*rgb;
+	char	*tmp;
+
+	i = 0;
+	arr_len = ft_arrlen(liner);
+	// if (arr_len < 2)
+	// 	ft_error("RGB Color is invalid!");
+	rgb = NULL;
+	tmp = liner[1];
+	while (i < arr_len - 1)
+	{
+		if(rgb == NULL)
+			rgb = ft_strdup(liner[i + 1]);
+		else
+			rgb = ft_strjoin(tmp, liner[i + 1]);
+		tmp = rgb;
+		i++;
+	}
+	printf("%s\n", rgb);
+	return (rgb);
+}
+
+void	put_texture(t_images *img, char **liner)
+{
+	if (liner[0] == NULL)
+		return ;
+	if (same_str(liner[0], "NO") == 0 && ft_arrlen(liner) == 2)
+		img->north_wall = ft_strdup(liner[1]);
+	else if (same_str(liner[0], "SO") == 0 && ft_arrlen(liner) == 2)
+		img->south_wall = ft_strdup(liner[1]);
+	else if (same_str(liner[0], "WE") == 0 && ft_arrlen(liner) == 2)
+		img->west_wall = ft_strdup(liner[1]);
+	else if (same_str(liner[0], "EA") == 0 && ft_arrlen(liner) == 2)
+		img->east_wall = ft_strdup(liner[1]);
+	else if (same_str(liner[0], "F") == 0)
+		img->floor = fc_texture(liner);
+	else if (same_str(liner[0], "C") == 0)
+		img->ceiling = fc_texture(liner);
+	else if(same_str(liner[0], "\n") != 0) // isspace islenmeli mi?
+		ft_error("Texture path is invalid!");
+}
+
 void	texture_init(t_game *game)
 {
 	int		fd;

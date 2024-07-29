@@ -55,5 +55,7 @@ typedef struct s_game
 
 int		ft_error(char *msg);
 void	map_name(char *str);
+int	ft_arrlen(char **arr);
+int	same_str(const char *str1, char *str2);	
 
 #endif

@@ -1,4 +1,4 @@
-CC      = gcc
+CC      = cc
 NAME    = cub3d
 CFLAGS  = -g -Wall -Werror -Wextra -fsanitize=address
 
@@ -45,4 +45,6 @@ fclean: clean
 	rm -rf $(LIBFT)
 	rm -rf $(NAME)
 
-.PHONY: all clean fclean re re2 run test
+re: fclean all
+
+.PHONY: all clean fclean re

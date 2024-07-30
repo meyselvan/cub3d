@@ -16,11 +16,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
-	size_t	x;
 	char	*str;
 
 	i = 0;
-	x = 0;
 	j = ft_strlen(s1);
 	if (!set)
 		return ((char *)s1);

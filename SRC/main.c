@@ -29,14 +29,13 @@ char	*fc_texture(char **liner)
 	tmp = liner[1];
 	while (i < arr_len - 1)
 	{
-		if(rgb == NULL)
+		if (rgb == NULL)
 			rgb = ft_strdup(liner[i + 1]);
 		else
 			rgb = ft_strjoin(tmp, liner[i + 1]);
 		tmp = rgb;
 		i++;
 	}
-	printf("%s\n", rgb);
 	return (rgb);
 }
 
@@ -44,20 +43,18 @@ void	put_texture(t_images *img, char **liner)
 {
 	if (liner[0] == NULL)
 		return ;
-	if (same_str(liner[0], "NO") == 0 && ft_arrlen(liner) == 2)
+	else if (same_str(liner[0], "NO") && ft_arrlen(liner) == 2 && !img->north_wall)
 		img->north_wall = ft_strdup(liner[1]);
-	else if (same_str(liner[0], "SO") == 0 && ft_arrlen(liner) == 2)
+	else if (same_str(liner[0], "SO") && ft_arrlen(liner) == 2 && !img->south_wall)
 		img->south_wall = ft_strdup(liner[1]);
-	else if (same_str(liner[0], "WE") == 0 && ft_arrlen(liner) == 2)
+	else if (same_str(liner[0], "WE") && ft_arrlen(liner) == 2 && !img->west_wall)
 		img->west_wall = ft_strdup(liner[1]);
-	else if (same_str(liner[0], "EA") == 0 && ft_arrlen(liner) == 2)
+	else if (same_str(liner[0], "EA") && ft_arrlen(liner) == 2 && !img->east_wall)
 		img->east_wall = ft_strdup(liner[1]);
-	else if (same_str(liner[0], "F") == 0)
+	else if (same_str(liner[0], "F") && !img->floor)
 		img->floor = fc_texture(liner);
-	else if (same_str(liner[0], "C") == 0)
+	else if (same_str(liner[0], "C") && !img->ceiling)
 		img->ceiling = fc_texture(liner);
-	else if(same_str(liner[0], "\n") != 0) // isspace islenmeli mi?
-		ft_error("Texture path is invalid!");
 }
 
 void	texture_init(t_game *game)
@@ -73,12 +70,12 @@ void	texture_init(t_game *game)
 	while (line)
 	{
 		liner = ft_split(line, ' ');
-		int i = 0;
-		while(liner[i] != NULL)
-		{
-			printf("%s\n", liner[i]);
-			i++;
-		}
+		// int i = 0;
+		// while(liner[i] != NULL)
+		// {
+		// 	printf("%s\n", liner[i]);
+		// 	i++;
+		// }
 		put_texture(game->img, liner);
 		free(line);
 		line = get_next_line(fd);
@@ -100,6 +97,12 @@ int	main(int argc, char **argv)
 		map_name(argv[1]);
 		game_init(game, argv[1]);
 		texture_init(game);
+		printf("code: %s\n", game->img->south_wall);
+		printf("code: %s\n", game->img->north_wall);
+		printf("code: %s\n", game->img->east_wall);
+		printf("code: %s\n", game->img->west_wall);
+		printf("code: %s\n", game->img->floor);
+		printf("code: %s\n", game->img->ceiling);
 		// total_check(game, argv[1]);
 		// if (game->map->col_y > 22)
 		// 	ft_error("Error\nThis map so big!");

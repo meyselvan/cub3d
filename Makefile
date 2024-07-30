@@ -2,8 +2,8 @@ CC      = cc
 NAME    = cub3d
 CFLAGS  = -g -Wall -Werror -Wextra -fsanitize=address
 
-SRC_DIR = ./src/
-OBJ_DIR = ./obj/
+SRC_DIR = ./SRC/
+OBJ_DIR = ./OBJ/
 INC_DIR = ./include
 
 SRC_FILES = $(shell find $(SRC_DIR) -name '*.c')

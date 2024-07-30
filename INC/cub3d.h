@@ -35,12 +35,12 @@ typedef struct s_map
 typedef struct s_images
 {
 	//void	*empty;
-	void	*south_wall;
-	void	*north_wall;
-	void	*east_wall;
-	void	*west_wall;
-	void 	*floor;
-	void	*ceiling;
+	char	*south_wall;
+	char	*north_wall;
+	char	*east_wall;
+	char	*west_wall;
+	char 	*floor;
+	char	*ceiling;
 }			t_images;
 
 typedef struct s_game

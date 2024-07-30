@@ -83,6 +83,7 @@ void	texture_init(t_game *game)
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 }
 
 int	main(int argc, char **argv)

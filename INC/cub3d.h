@@ -14,6 +14,37 @@
 #  define BUFFER_SIZE 42
 # endif
 
+typedef struct s_map
+{
+	char	*line;
+	struct s_map	*next;
+	struct s_map	*prev;
+}				t_map;
+
+typedef struct s_images
+{
+	char	*south_wall;
+	char	*north_wall;
+	char	*east_wall;
+	char	*west_wall;
+	char 	*floor;
+	char	*ceiling;
+}			t_images;
+
+typedef struct s_game
+{
+	t_map		*map_head;
+	t_map 		*map_tail;
+	t_images	*img;
+	void		*mlx;
+	void		*win;
+	char		*mapname;
+	int			playercount;
+	// int			loc_px; player structı olusturulacak
+	// int			loc_py;
+}				t_game;
+
+
 char	*get_next_line(int fd);
 char	*ft_read_fd(char *str, int fd);
 char	*ft_gnl_strjoin(char *dest, char *src);
@@ -25,33 +56,17 @@ int		ft_error(char *msg);
 void	map_name(char *str);
 int		ft_arrlen(char **arr);
 int		same_str(const char *str1, char *str2);	
-
-typedef struct s_map
-{
-	char	**all_map;
-	char	**copy_map;
-}				t_map;
-
-typedef struct s_images
-{
-	//void	*empty;
-	char	*south_wall;
-	char	*north_wall;
-	char	*east_wall;
-	char	*west_wall;
-	char 	*floor;
-	char	*ceiling;
-}			t_images;
-
-typedef struct s_game
-{
-	t_map		*map;
-	t_images	*img;
-	void		*mlx;
-	void		*win;
-	char		*mapname;
-	int			loc_px;
-	int			loc_py;
-}				t_game;
-
+char	*fc_texture(char **liner);
+void	put_texture(t_images *img, char **liner);
+void	texture_init(t_game *game);
+int		rgb_check(char *rgb);
+void add_map_node(t_game *game, char *line);
+int		comma_count(char *str);
+void	xpm_name(char *str);
+void	map_check(t_game *game);
+void del_map_node_from_head(t_game *game);
+int ft_is_all_space(char *str);
+void del_map_node_from_tail(t_game *game);
+int ft_isspace(char c);
+int ft_is_all_space(char *str);
 #endif

@@ -5,82 +5,16 @@ void	game_init(t_game *game, char *str)
 	// game->mlx = mlx_init();
 	// if (!game->mlx)
 	// 	ft_error("Mlx doesn't work!");
-	game->map = ft_calloc(sizeof(t_map), 1);
-	if (!game->map)
+	game->map_head = ft_calloc(sizeof(t_map), 1);
+	if (!game->map_head)
 		ft_error("Malloc doesn't work!");
 	game->img = ft_calloc(sizeof(t_images), 1);
 	if (!game->img)
 		ft_error("Malloc doesn't work!");
 	game->mapname = ft_strdup(str); // freelemeyi unutma
-}
-
-char	*fc_texture(char **liner)
-{
-	int		i;
-	int		arr_len;
-	char	*rgb;
-	char	*tmp;
-
-	i = 0;
-	arr_len = ft_arrlen(liner);
-	// if (arr_len < 2)
-	// 	ft_error("RGB Color is invalid!");
-	rgb = NULL;
-	tmp = liner[1];
-	while (i < arr_len - 1)
-	{
-		if (rgb == NULL)
-			rgb = ft_strdup(liner[i + 1]);
-		else
-			rgb = ft_strjoin(tmp, liner[i + 1]);
-		tmp = rgb;
-		i++;
-	}
-	return (rgb);
-}
-
-void	put_texture(t_images *img, char **liner)
-{
-	if (liner[0] == NULL)
-		return ;
-	else if (same_str(liner[0], "NO") && ft_arrlen(liner) == 2 && !img->north_wall)
-		img->north_wall = ft_strdup(liner[1]);
-	else if (same_str(liner[0], "SO") && ft_arrlen(liner) == 2 && !img->south_wall)
-		img->south_wall = ft_strdup(liner[1]);
-	else if (same_str(liner[0], "WE") && ft_arrlen(liner) == 2 && !img->west_wall)
-		img->west_wall = ft_strdup(liner[1]);
-	else if (same_str(liner[0], "EA") && ft_arrlen(liner) == 2 && !img->east_wall)
-		img->east_wall = ft_strdup(liner[1]);
-	else if (same_str(liner[0], "F") && !img->floor)
-		img->floor = fc_texture(liner);
-	else if (same_str(liner[0], "C") && !img->ceiling)
-		img->ceiling = fc_texture(liner);
-}
-
-void	texture_init(t_game *game)
-{
-	int		fd;
-	char	*line;
-	char	**liner;
-
-	fd = open(game->mapname, O_RDONLY);
-	if (fd < 0)
-		ft_error("The specified file path is invalid or not found!");
-	line = get_next_line(fd);
-	while (line)
-	{
-		liner = ft_split(line, ' ');
-		// int i = 0;
-		// while(liner[i] != NULL)
-		// {
-		// 	printf("%s\n", liner[i]);
-		// 	i++;
-		// }
-		put_texture(game->img, liner);
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
+	game->map_tail = NULL;
+	game->map_head = NULL;
+	game->playercount = 0;
 }
 
 int	main(int argc, char **argv)
@@ -89,7 +23,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		ft_error("The number of arguments is less than required!");
-	game = ft_calloc(sizeof(t_game), 1);
+	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 		ft_error("Malloc doesn't work!");
 	if (argc == 2)
@@ -97,12 +31,9 @@ int	main(int argc, char **argv)
 		map_name(argv[1]);
 		game_init(game, argv[1]);
 		texture_init(game);
-		printf("code: %s\n", game->img->south_wall);
-		printf("code: %s\n", game->img->north_wall);
-		printf("code: %s\n", game->img->east_wall);
-		printf("code: %s\n", game->img->west_wall);
-		printf("code: %s\n", game->img->floor);
-		printf("code: %s\n", game->img->ceiling);
+		del_map_node_from_head(game);
+		del_map_node_from_tail(game);
+		map_check(game);
 		// total_check(game, argv[1]);
 		// if (game->map->col_y > 22)
 		// 	ft_error("Error\nThis map so big!");

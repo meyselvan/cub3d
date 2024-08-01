@@ -57,9 +57,9 @@ void count_row_col(t_game *game)
 	while (tmp)
 	{
 		i = 0;
-		while (tmp->line[i])
+		while (tmp->line[i] && tmp->line[i] != '\n')
 			i++;
-		if (i > game->row)
+		if (i > game->row )
 			game->row = i;
 		j++;
 		tmp = tmp->next;
@@ -88,7 +88,15 @@ int	main(int argc, char **argv)
 		map_check(game);
 		player_loc(game, game->map_head);
 		count_row_col(game);
-		// flood_fill(game, game->loc_px, game->loc_py);
+		struct_to_array(game);
+		fill_star(game);
+		int i = 0;
+		while(i < game->col)
+		{
+			printf("%s\n", game->map[i]);
+			i++;
+		}
+		// // flood_fill(game, game->loc_px, game->loc_py);
 		// total_check(game, argv[1]);
 		// if (game->map->col_y > 22)
 		// 	ft_error("Error\nThis map so big!");

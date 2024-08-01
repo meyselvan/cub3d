@@ -30,3 +30,34 @@ int	same_str(const char *str1, char *str2)
 	}
 	return (1);
 }
+
+void	struct_to_array(t_game *game)
+{
+	t_map	*tmp;
+	int		i;
+	int		j;
+	int		k;
+	int		len;
+
+	tmp = game->map_head;
+	i = 0;
+	j = 0;
+	k = 0;
+	len = 0;
+	if (game->col > 0)
+		game->map = ft_calloc(sizeof(char *), game->col + 1);
+	if (game->map == NULL)
+		ft_error("Malloc doesn't work!");
+	while (tmp && game->col > k)
+	{
+		if (game->col == k + 1)
+			game->map[k] = ft_strdup(tmp->line);
+		else
+		{
+			len = ft_strlen(tmp->line);
+			game->map[k] = ft_substr(tmp->line, 0, len - 1);
+		}
+		tmp = tmp->next;
+		k++;
+	}
+}

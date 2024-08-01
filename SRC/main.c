@@ -17,6 +17,58 @@ void	game_init(t_game *game, char *str)
 	game->playercount = 0;
 }
 
+void player_loc(t_game *game, t_map *node)
+{
+	t_map *tmp;
+	int	i;
+	int j;
+
+	tmp = node;
+	j = 0;
+	while (tmp)
+	{
+		i = 0;
+		while (tmp->line[i])
+		{
+			if (tmp->line[i] == 'N' || tmp->line[i] == 'S' || tmp->line[i] == 'W' || tmp->line[i] == 'E')
+			{
+				game->loc_px = i;
+				game->loc_py = j;
+				printf("Player location: x: %d y:%d\n", game->loc_px, game->loc_py);
+				return ;
+			}
+			i++;
+		}
+		// printf("%s", tmp->line);
+		tmp = tmp->next;
+		j++;
+	}
+}
+
+void count_row_col(t_game *game)
+{
+	t_map *tmp;
+	int i;
+	int j;
+
+	tmp = game->map_head;
+	i = 0;
+	j = 0;
+	while (tmp)
+	{
+		i = 0;
+		while (tmp->line[i])
+			i++;
+		if (i > game->row)
+			game->row = i;
+		j++;
+		tmp = tmp->next;
+	}
+	game->col = j;
+	printf("Row: %d Col: %d\n", game->row, game->col);
+}
+
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -34,6 +86,9 @@ int	main(int argc, char **argv)
 		del_map_node_from_head(game);
 		del_map_node_from_tail(game);
 		map_check(game);
+		player_loc(game, game->map_head);
+		count_row_col(game);
+		// flood_fill(game, game->loc_px, game->loc_py);
 		// total_check(game, argv[1]);
 		// if (game->map->col_y > 22)
 		// 	ft_error("Error\nThis map so big!");

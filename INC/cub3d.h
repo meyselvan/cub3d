@@ -31,6 +31,7 @@ typedef struct s_images
 	char	*ceiling;
 }			t_images;
 
+
 typedef struct s_game
 {
 	t_map		*map_head;
@@ -40,8 +41,10 @@ typedef struct s_game
 	void		*win;
 	char		*mapname;
 	int			playercount;
-	// int			loc_px; player structı olusturulacak
-	// int			loc_py;
+	int			loc_px; //player structı olusturulacak
+	int			loc_py;
+	int			row;
+	int			col;
 }				t_game;
 
 

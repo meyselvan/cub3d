@@ -9,11 +9,12 @@
 # include <string.h> // for strerror
 # include "../MLX/mlx.h"
 # include "../LIBFT/libft.h"
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
+# define SCREENHEIGHT 512
+# define SCREENWIDTH 1280
 typedef struct s_map
 {
 	char	*line;

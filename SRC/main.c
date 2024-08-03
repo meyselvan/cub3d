@@ -2,9 +2,10 @@
 
 void	game_init(t_game *game, char *str)
 {
-	// game->mlx = mlx_init();
-	// if (!game->mlx)
-	// 	ft_error("Mlx doesn't work!");
+	map_name(str);
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		ft_error("Mlx doesn't work!");
 	game->map_head = ft_calloc(sizeof(t_map), 1);
 	if (!game->map_head)
 		ft_error("Malloc doesn't work!");
@@ -15,6 +16,9 @@ void	game_init(t_game *game, char *str)
 	game->map_tail = NULL;
 	game->map_head = NULL;
 	game->playercount = 0;
+	texture_init(game);
+	del_map_node_from_head(game);
+	del_map_node_from_tail(game);
 }
 
 void player_loc(t_game *game, t_map *node)
@@ -68,7 +72,6 @@ void count_row_col(t_game *game)
 	printf("Row: %d Col: %d\n", game->row, game->col);
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -80,29 +83,15 @@ int	main(int argc, char **argv)
 		ft_error("Malloc doesn't work!");
 	if (argc == 2)
 	{
-		map_name(argv[1]);
 		game_init(game, argv[1]);
-		texture_init(game);
-		del_map_node_from_head(game);
-		del_map_node_from_tail(game);
 		map_check(game);
 		player_loc(game, game->map_head);
 		count_row_col(game);
-		struct_to_array(game);
+		struct_to_array(game); 
 		fill_star(game);
-		int i = 0;
-		while(i < game->col)
-		{
-			printf("%s\n", game->map[i]);
-			i++;
-		}
 		flood_fill(game);
-		// total_check(game, argv[1]);
-		// if (game->map->col_y > 22)
-		// 	ft_error("Error\nThis map so big!");
-		// game->win = mlx_new_window(game->mlx, game->map->row_x * 64,
-		// 		game->map->col_y * 64, "so_long");
-		// ft_place(game);
+		game->win = mlx_new_window(game->mlx, 200 * 64,
+	 		200 * 64, "cub3d");
 		// mlx_key_hook(game->win, key_hook, game);
 		// mlx_hook(game->win, 17, 0L, finish_game, game);
 		// mlx_loop(game->mlx);

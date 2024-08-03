@@ -37,15 +37,15 @@ void control_four_direction(char **tmp, int j, int i)
 {
 	int len;
 	len = ft_strlen(tmp[j]);
-	if (tmp[j][i] == '0')
+	if (tmp[j][i] == '0' || tmp[j][i] == 'N' || tmp[j][i] == 'S' || tmp[j][i] == 'W' || tmp[j][i] == 'E')
 	{
 		if (i - 1 >= 0 && (tmp[j][i - 1] == ' ' || tmp[j][i - 1] == '*'))
 			ft_error("Map is not closed!");
-		if (i + 1 < len && (tmp[j][i - 1] == ' ' || tmp[j][i - 1] == '*'))
+		if (i + 1 < len && (tmp[j][i + 1] == ' ' || tmp[j][i + 1] == '*'))
 			ft_error("Map is not closed!");
-		if (j - 1 >= 0 && (tmp[j][i - 1] == ' ' || tmp[j][i - 1] == '*'))
+		if (j - 1 >= 0 && (tmp[j - 1][i] == ' ' || tmp[j - 1][i] == '*'))
 			ft_error("Map is not closed!");
-		if (j + 1 < ft_arrlen(tmp) && (tmp[j][i - 1] == ' ' || tmp[j][i - 1] == '*'))
+		if (j + 1 < ft_arrlen(tmp) && (tmp[j + 1][i] == ' ' || tmp[j + 1][i] == '*'))
 			ft_error("Map is not closed!");
 	}
 }

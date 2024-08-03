@@ -21,12 +21,15 @@ FTSRC = $(shell ls ./libft/*.c)
 all: $(NAME)
 
 # Programı oluştur
-$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) 
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $@
+$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ)  $(MLX)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)  -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
 
 # Libft'i oluştur
 $(LIBFT): $(FTSRC)
 	make -C libft
+
+$(MLX): 
+	make re -C ./mlx
 
 # Obj dosyalarını oluştur
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c

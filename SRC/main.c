@@ -96,7 +96,7 @@ int	main(int argc, char **argv)
 			printf("%s\n", game->map[i]);
 			i++;
 		}
-		// // flood_fill(game, game->loc_px, game->loc_py);
+		flood_fill(game);
 		// total_check(game, argv[1]);
 		// if (game->map->col_y > 22)
 		// 	ft_error("Error\nThis map so big!");

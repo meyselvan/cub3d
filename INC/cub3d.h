@@ -75,4 +75,5 @@ int ft_isspace(char c);
 int ft_is_all_space(char *str);
 void	fill_star(t_game *game);
 void	struct_to_array(t_game *game);
+void flood_fill(t_game *game);
 #endif

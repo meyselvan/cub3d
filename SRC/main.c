@@ -12,6 +12,12 @@ void	game_init(t_game *game, char *str)
 	game->img = ft_calloc(sizeof(t_images), 1);
 	if (!game->img)
 		ft_error("Malloc doesn't work!");
+	game->key = ft_calloc(sizeof(t_keycode), 1);
+	if (!game->key)
+		ft_error("Malloc doesn't work!");
+	game->player = ft_calloc(sizeof(t_player), 1);
+	if (!game->player)
+		ft_error("Malloc doesn't work!");
 	game->mapname = ft_strdup(str); // freelemeyi unutma
 	game->map_tail = NULL;
 	game->map_head = NULL;
@@ -38,7 +44,7 @@ void player_loc(t_game *game, t_map *node)
 			{
 				game->loc_px = i;
 				game->loc_py = j;
-				printf("Player location: x: %d y:%d\n", game->loc_px, game->loc_py);
+				game->playertype = tmp->line[i];
 				return ;
 			}
 			i++;
@@ -72,6 +78,38 @@ void count_row_col(t_game *game)
 	printf("Row: %d Col: %d\n", game->row, game->col);
 }
 
+void init_player(t_game *game)
+{
+	if(game->playertype == 'N')
+	{
+		game->player->dir_x = 1;
+		game->player->dir_y = 0;
+		game->player->plane_x = 0.66;
+		game->player->plane_y = 0;
+	}
+	else if(game->playertype == 'S')
+	{
+		game->player->dir_x = -1;
+		game->player->dir_y = 0;
+		game->player->plane_x = -0.66;
+		game->player->plane_y = 0;
+	}
+	else if(game->playertype == 'W')
+	{
+		game->player->dir_x = 0;
+		game->player->dir_y = -1;
+		game->player->plane_x = 0;
+		game->player->plane_y = -0.66;
+	}
+	else if(game->playertype == 'E')
+	{
+		game->player->dir_x = 0;
+		game->player->dir_y = 1;
+		game->player->plane_x = 0;
+		game->player->plane_y = 0.66;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -90,11 +128,14 @@ int	main(int argc, char **argv)
 		struct_to_array(game); 
 		fill_star(game);
 		flood_fill(game);
-		game->win = mlx_new_window(game->mlx, 200 * 64,
-	 		200 * 64, "cub3d");
-		// mlx_key_hook(game->win, key_hook, game);
-		// mlx_hook(game->win, 17, 0L, finish_game, game);
-		// mlx_loop(game->mlx);
+		init_player(game);
+		game->win = mlx_new_window(game->mlx, SCREENWIDTH,
+	 		SCREENHEIGHT, "cub3d");
+		mlx_key_hook(game->win, game_hook, game);
+		mlx_hook(game->win, 3, 0, key_released, game);
+		mlx_hook(game->win, 2, 0, key_pressed, game);
+		mlx_hook(game->win, 17, 0, exit_game, game);
+		mlx_loop(game->mlx);
 	}
 	else
 		ft_error("The number of arguments is more than necessary!");

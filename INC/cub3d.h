@@ -13,8 +13,9 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# define SCREENHEIGHT 512
+# define SCREENHEIGHT 512 
 # define SCREENWIDTH 1280
+
 typedef struct s_map
 {
 	char	*line;
@@ -32,18 +33,41 @@ typedef struct s_images
 	char	*ceiling;
 }			t_images;
 
+typedef struct s_keycode
+{
+	int		w;
+	int		a;
+	int		s;
+	int		d;
+	int		left;
+	int		right;
+}				t_keycode;
+
+typedef struct s_player
+{
+	double		x;
+	double		y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	double		angle;
+}				t_player;
 
 typedef struct s_game
 {
 	t_map		*map_head;
 	t_map 		*map_tail;
 	t_images	*img;
+	t_keycode	*key;
+	t_player	*player;
+	int		*playertype;
 	void		*mlx;
 	void		*win;
 	char 		**map;
 	char		*mapname;
 	int			playercount;
-	int			loc_px; //player structı olusturulacak
+	int			loc_px;
 	int			loc_py;
 	int			row;
 	int			col;
@@ -77,4 +101,9 @@ int ft_is_all_space(char *str);
 void	fill_star(t_game *game);
 void	struct_to_array(t_game *game);
 void flood_fill(t_game *game);
+int	exit_game(t_game *game);
+int key_pressed(int keycode, t_game *game);
+int key_released(int keycode, t_game *game);
+int game_hook(t_game *game);
+
 #endif

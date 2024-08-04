@@ -129,6 +129,11 @@ int	main(int argc, char **argv)
 		fill_star(game);
 		flood_fill(game);
 		init_player(game);
+
+		//raycast func icine alinacak
+		calc_color(game, 'c');
+		calc_color(game, 'f');
+
 		game->win = mlx_new_window(game->mlx, SCREENWIDTH,
 	 		SCREENHEIGHT, "cub3d");
 		mlx_key_hook(game->win, game_hook, game);

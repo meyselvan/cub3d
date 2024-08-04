@@ -31,6 +31,8 @@ typedef struct s_images
 	char	*west_wall;
 	char 	*floor;
 	char	*ceiling;
+	int		floor_color;
+	int		ceiling_color;
 }			t_images;
 
 typedef struct s_keycode
@@ -61,16 +63,20 @@ typedef struct s_game
 	t_images	*img;
 	t_keycode	*key;
 	t_player	*player;
-	int		*playertype;
+
 	void		*mlx;
 	void		*win;
+
 	char 		**map;
 	char		*mapname;
+
 	int			playercount;
+	char		playertype;
 	int			loc_px;
 	int			loc_py;
 	int			row;
 	int			col;
+
 }				t_game;
 
 
@@ -105,5 +111,8 @@ int	exit_game(t_game *game);
 int key_pressed(int keycode, t_game *game);
 int key_released(int keycode, t_game *game);
 int game_hook(t_game *game);
+
+//raycasting
+int calc_color(t_game *game, char c_or_f);
 
 #endif

@@ -34,14 +34,10 @@ int	same_str(const char *str1, char *str2)
 void	struct_to_array(t_game *game)
 {
 	t_map	*tmp;
-	int		i;
-	int		j;
 	int		k;
 	int		len;
 
 	tmp = game->map_head;
-	i = 0;
-	j = 0;
 	k = 0;
 	len = 0;
 	if (game->col > 0)

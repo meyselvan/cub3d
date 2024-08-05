@@ -24,3 +24,9 @@ int calc_color(t_game *game, char c_or_f)
     free(rgb);
     return (color);
 }
+
+void set_cf_texture(t_game *game)
+{
+	game->img->ceiling_texture = calc_color(game, 'c');
+	game->img->floor_texture = calc_color(game, 'f');
+}

@@ -31,8 +31,8 @@ typedef struct s_images
 	char	*west_wall;
 	char 	*floor;
 	char	*ceiling;
-	int		floor_color;
-	int		ceiling_color;
+	int		floor_texture;
+	int		ceiling_texture;
 }			t_images;
 
 typedef struct s_keycode
@@ -54,6 +54,8 @@ typedef struct s_player
 	double		plane_x;
 	double		plane_y;
 	double		angle;
+
+	int			**tmp;
 }				t_player;
 
 typedef struct s_game
@@ -66,6 +68,13 @@ typedef struct s_game
 
 	void		*mlx;
 	void		*win;
+
+	//goruntu isleme
+	void		*img_ptr;
+	int 		pixel_bits;
+	int 		line_bytes;
+	int 		endian;
+	char 		*buffer;
 
 	char 		**map;
 	char		*mapname;
@@ -113,6 +122,9 @@ int key_released(int keycode, t_game *game);
 int game_hook(t_game *game);
 
 //raycasting
+void init_raycast(t_game *game);
+
 int calc_color(t_game *game, char c_or_f);
+void set_cf_texture(t_game *game);
 
 #endif

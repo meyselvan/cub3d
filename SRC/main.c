@@ -75,39 +75,7 @@ void count_row_col(t_game *game)
 		tmp = tmp->next;
 	}
 	game->col = j;
-	printf("Row: %d Col: %d\n", game->row, game->col);
-}
-
-void init_player(t_game *game)
-{
-	if(game->playertype == 'N')
-	{
-		game->player->dir_x = 1;
-		game->player->dir_y = 0;
-		game->player->plane_x = 0.66;
-		game->player->plane_y = 0;
-	}
-	else if(game->playertype == 'S')
-	{
-		game->player->dir_x = -1;
-		game->player->dir_y = 0;
-		game->player->plane_x = -0.66;
-		game->player->plane_y = 0;
-	}
-	else if(game->playertype == 'W')
-	{
-		game->player->dir_x = 0;
-		game->player->dir_y = -1;
-		game->player->plane_x = 0;
-		game->player->plane_y = -0.66;
-	}
-	else if(game->playertype == 'E')
-	{
-		game->player->dir_x = 0;
-		game->player->dir_y = 1;
-		game->player->plane_x = 0;
-		game->player->plane_y = 0.66;
-	}
+	// printf("Row: %d Col: %d\n", game->row, game->col);
 }
 
 int	main(int argc, char **argv)
@@ -128,14 +96,9 @@ int	main(int argc, char **argv)
 		struct_to_array(game); 
 		fill_star(game);
 		flood_fill(game);
-		init_player(game);
-
-		//raycast func icine alinacak
-		calc_color(game, 'c');
-		calc_color(game, 'f');
-
 		game->win = mlx_new_window(game->mlx, SCREENWIDTH,
 	 		SCREENHEIGHT, "cub3d");
+		init_raycast(game);
 		mlx_key_hook(game->win, game_hook, game);
 		mlx_hook(game->win, 3, 0, key_released, game);
 		mlx_hook(game->win, 2, 0, key_pressed, game);

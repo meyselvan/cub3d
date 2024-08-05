@@ -57,34 +57,17 @@ void init_raycast(t_game *game)
 	//-------ekrana img basma 
 
 	game->img_ptr = mlx_new_image(game->mlx, SCREENWIDTH, SCREENHEIGHT);
+
+	int w;
+	int h;
+	game->img_ptr = mlx_xpm_file_to_image(game->mlx, game->img->south_wall, &w, &h);
+	if (!game->img_ptr)
+		ft_error("Invalid texture!");
+
 	game->buffer = mlx_get_data_addr(game->img_ptr, &game->pixel_bits, &game->line_bytes, &game->endian);
 
-	int color = 0xABCDEF;
-
-	if (game->pixel_bits != 32)
-		color = mlx_get_color_value(game->mlx, color);
-
-	for(int y = 0; y < SCREENHEIGHT; ++y)
-	for(int x = 0; x < SCREENWIDTH; ++x)
-	{
-		int pixel = (y * game->line_bytes) + (x * 4);
-
-		if (game->endian == 1)        // Most significant (Alpha) byte first
-		{
-			game->buffer[pixel + 0] = (color >> 24);
-			game->buffer[pixel + 1] = (color >> 16) & 0xFF;
-			game->buffer[pixel + 2] = (color >> 8) & 0xFF;
-			game->buffer[pixel + 3] = (color) & 0xFF;
-		}
-		else if (game->endian == 0)   // Least significant (Blue) byte first
-		{
-			game->buffer[pixel + 0] = (color) & 0xFF;
-			game->buffer[pixel + 1] = (color >> 8) & 0xFF;
-			game->buffer[pixel + 2] = (color >> 16) & 0xFF;
-			game->buffer[pixel + 3] = (color >> 24);
-		}
-	}
-
+	
+	
 	mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
 
 

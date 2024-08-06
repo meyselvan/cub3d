@@ -98,9 +98,9 @@ int	main(int argc, char **argv)
 		flood_fill(game);
 		game->win = mlx_new_window(game->mlx, SCREENWIDTH,
 	 		SCREENHEIGHT, "cub3d");
+		init_player(game);
 		init_raycast(game);
 		mlx_key_hook(game->win, game_hook, game);
-		mlx_hook(game->win, 3, 0, key_released, game);
 		mlx_hook(game->win, 2, 0, key_pressed, game);
 		mlx_hook(game->win, 17, 0, exit_game, game);
 		mlx_loop(game->mlx);

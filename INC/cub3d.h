@@ -76,6 +76,9 @@ typedef struct s_game
 	int 		endian;
 	char 		*buffer;
 
+	int			*mlx_data;
+	//--------
+
 	char 		**map;
 	char		*mapname;
 
@@ -122,9 +125,11 @@ int key_released(int keycode, t_game *game);
 int game_hook(t_game *game);
 
 //raycasting
-void init_raycast(t_game *game);
+int init_raycast(t_game *game);
 
 int calc_color(t_game *game, char c_or_f);
 void set_cf_texture(t_game *game);
-
+void player_game(t_game *game);
+void move_player(t_game *game, int direction);
+void init_player(t_game *game);
 #endif

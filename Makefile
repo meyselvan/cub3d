@@ -29,7 +29,7 @@ $(LIBFT): $(FTSRC)
 	make -C libft
 
 $(MLX): 
-	make re -C ./mlx
+	make re -c ./MLX/
 
 # Obj dosyalarını oluştur
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c

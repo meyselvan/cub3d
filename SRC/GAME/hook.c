@@ -10,14 +10,14 @@ int	exit_game(t_game *game)
 
 void move_player(t_game *game, int direction)
 {
-
-	int new_x;
-	int new_y;
-	(void) new_x;
-	(void) new_y;
-
-	new_x = game->loc_px + (int)(cos(game->player->angle) * 10 * direction);
-	new_y = game->loc_py + (int)(sin(game->player->angle) * 10 * direction);
+    int new_x;
+    int new_y;
+    new_x = game->loc_px + game->player->dir_x * direction;
+    new_y = game->loc_py + game->player->dir_y * direction;
+    // if (game->map[game->loc_py][new_x] == '0')
+        game->loc_px = new_x;
+    // if (game->map[new_y][game->loc_px] == '0')
+        game->loc_py = new_y;
 }
 
 void player_game(t_game *game)
@@ -39,9 +39,10 @@ void player_game(t_game *game)
 int game_hook(t_game *game)
 {
 	// put_floor_and_ceiling(game);
+	(void)game;
 	
-	player_game(game);
+	init_raycast(game);
+	//player_game(game);
 	// casting_rays(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	return (0);
 }

@@ -29,3 +29,4 @@ https://github.com/proteal/DOOM-Vis
 https://github.com/jwhitham/HeadlessDoom
 
 https://github.com/id-Software/DOOM
+https://medium.com/@rtailidounia/raycasting-in-cub3d-42-network-project-a-practical-tutorial-using-vectors-68eeb16b3de2

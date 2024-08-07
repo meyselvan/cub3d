@@ -16,8 +16,13 @@ void move_player(t_game *game, int direction)
 	(void) new_x;
 	(void) new_y;
 
+	
+	printf("game->player->angle: %f\n", game->player->angle);
 	new_x = game->loc_px + (int)(cos(game->player->angle) * 10 * direction);
 	new_y = game->loc_py + (int)(sin(game->player->angle) * 10 * direction);
+	game->loc_px = new_x;
+	game->loc_py = new_y;
+	
 }
 
 void player_game(t_game *game)
@@ -42,7 +47,7 @@ int game_hook(void *param)
 	(void) game;
 	// put_floor_and_ceiling(game);
 	
-	// player_game(game);
+	player_game(game);
 	// casting_rays(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
 	return (0);

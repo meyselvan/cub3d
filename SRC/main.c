@@ -98,7 +98,10 @@ int	main(int argc, char **argv)
 			ft_error("Mlx doesn't work!");
 		game->win = mlx_new_window(game->mlx, SCREENWIDTH,
 	 		SCREENHEIGHT, "cub3d");
+		init_player(game);
 		init_raycast(game);
+		// printf("game->dir_X: %f\n", game->player->dir_x);
+		// printf("game->dir_Y: %f\n", game->player->dir_y);
 		mlx_loop_hook(game->mlx, game_hook, game);
 		mlx_hook(game->win, 3, 0, key_released, game);
 		mlx_hook(game->win, 2, 0, key_pressed, game);

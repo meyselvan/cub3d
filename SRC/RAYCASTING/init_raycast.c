@@ -51,25 +51,44 @@ void init_tmp(t_game *game)
 
 void init_raycast(t_game *game)
 {
-	init_player(game);
-	init_tmp(game);
-
 	//-------ekrana img basma 
 
 	game->img_ptr = mlx_new_image(game->mlx, SCREENWIDTH, SCREENHEIGHT);
 
-	int w;
-	int h;
-	game->img_ptr = mlx_xpm_file_to_image(game->mlx, game->img->south_wall, &w, &h);
+	game->mlx_data = (int *)mlx_get_data_addr(game->img_ptr, &game->pixel_bits, &game->line_bytes, &game->endian);
+
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (i < SCREENHEIGHT / 2)
+	{
+		n = 0;
+		while (n < SCREENWIDTH)
+		{
+			game->mlx_data[i * SCREENWIDTH + n] = calc_color(game, 'c');
+			n++;
+		}
+		i++;
+	}
+	while (i < SCREENHEIGHT)
+	{
+		n = 0;
+		while (n < SCREENWIDTH)
+		{
+			game->mlx_data[i * SCREENWIDTH + n] = calc_color(game, 'f');
+			n++;
+		}
+		i++;
+	}
+	
+	// game->mlx_data[SCREENWIDTH * (int)game->loc_px] = 16777215;
+	// game->mlx_data[SCREENHEIGHT * (int)game->loc_py] = 16777215;
+
 	if (!game->img_ptr)
 		ft_error("Invalid texture!");
-
-	game->buffer = mlx_get_data_addr(game->img_ptr, &game->pixel_bits, &game->line_bytes, &game->endian);
-
 	
 	
 	mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
-
-
-
 }

@@ -19,8 +19,7 @@ int calc_color(t_game *game, char c_or_f)
         ft_error("Invalid RGB value\n");
 
     color = ft_atoi(rgb[0]) * 65536 + ft_atoi(rgb[1]) * 256 + ft_atoi(rgb[2]);
-
-	printf("color: %d\n", color);
+    
     free(rgb);
     return (color);
 }

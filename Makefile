@@ -42,9 +42,11 @@ $(OBJ_DIR):
 
 clean:
 	make clean -C libft/
+	make clean -C MLX/
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
+	make clean -C MLX/
 	rm -rf $(LIBFT)
 	rm -rf $(NAME)
 

@@ -3,9 +3,6 @@
 void	game_init(t_game *game, char *str)
 {
 	map_name(str);
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		ft_error("Mlx doesn't work!");
 	game->map_head = ft_calloc(sizeof(t_map), 1);
 	if (!game->map_head)
 		ft_error("Malloc doesn't work!");
@@ -96,10 +93,13 @@ int	main(int argc, char **argv)
 		struct_to_array(game); 
 		fill_star(game);
 		flood_fill(game);
+		game->mlx = mlx_init();
+		if (!game->mlx)
+			ft_error("Mlx doesn't work!");
 		game->win = mlx_new_window(game->mlx, SCREENWIDTH,
 	 		SCREENHEIGHT, "cub3d");
 		init_raycast(game);
-		mlx_key_hook(game->win, game_hook, game);
+		mlx_loop_hook(game->mlx, game_hook, game);
 		mlx_hook(game->win, 3, 0, key_released, game);
 		mlx_hook(game->win, 2, 0, key_pressed, game);
 		mlx_hook(game->win, 17, 0, exit_game, game);

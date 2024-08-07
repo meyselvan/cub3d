@@ -74,7 +74,7 @@ typedef struct s_game
 	int 		pixel_bits;
 	int 		line_bytes;
 	int 		endian;
-	char 		*buffer;
+	int			*mlx_data;
 
 	char 		**map;
 	char		*mapname;
@@ -119,7 +119,7 @@ void flood_fill(t_game *game);
 int	exit_game(t_game *game);
 int key_pressed(int keycode, t_game *game);
 int key_released(int keycode, t_game *game);
-int game_hook(t_game *game);
+int game_hook(void *param);
 
 //raycasting
 void init_raycast(t_game *game);

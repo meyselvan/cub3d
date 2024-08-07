@@ -36,12 +36,14 @@ void player_game(t_game *game)
 	// 	rotate_player(game, -1);
 }
 
-int game_hook(t_game *game)
+int game_hook(void *param)
 {
+	t_game *game = (t_game *)param;
+	(void) game;
 	// put_floor_and_ceiling(game);
 	
-	player_game(game);
+	// player_game(game);
 	// casting_rays(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
 	return (0);
 }

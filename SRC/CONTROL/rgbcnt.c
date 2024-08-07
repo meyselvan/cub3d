@@ -16,16 +16,17 @@ int comma_count(char *str)
 	return (count);
 }
 
-int rgb_check(char *rgb)
+int rgb_check(char *rgb_tmp)
 {
-	int i;
-	int s;
+    int i;
+    int s;
     char *tmp;
     int rgbx;
-
+    char *rgb;
     i = 0;
     tmp = NULL;
     rgbx = 0;
+    rgb = ft_substr(rgb_tmp, 0, ft_strlen(rgb_tmp) - 2);
     if (comma_count(rgb) != 2)
         return (0);
     while (rgb[i] != '\0')

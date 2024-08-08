@@ -82,8 +82,7 @@ void init_raycast(t_game *game)
 		}
 		i++;
 	}
-	
-	// game->mlx_data[SCREENWIDTH * (int)game->loc_px] = 16777215;
+
 	// game->mlx_data[SCREENHEIGHT * (int)game->loc_py] = 16777215;
 
 	if (!game->img_ptr)

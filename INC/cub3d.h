@@ -128,4 +128,9 @@ void init_player(t_game *game);
 int calc_color(t_game *game, char c_or_f);
 void set_cf_texture(t_game *game);
 
+
+//move funcs
+void rotate_player(t_game *game, int direction);
+
+
 #endif

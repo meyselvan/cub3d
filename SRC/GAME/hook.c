@@ -80,6 +80,25 @@ void move_ad(t_game *game, int direction)
 	
 // }
 
+void rotate_player(t_game *game, int direction)
+{
+	double old_dirx;
+	double old_planex;
+	double rotate_angle;
+
+	rotate_angle = 0.05 * direction;
+
+	old_dirx = game->player->dir_x;
+	game->player->dir_x = game->player->dir_x * cos(rotate_angle) - game->player->dir_y * sin(rotate_angle);
+	game->player->dir_y = old_dirx * sin(rotate_angle) + game->player->dir_y * cos(rotate_angle);
+
+	old_planex = game->player->plane_x;
+	game->player->plane_x = game->player->plane_x * cos(rotate_angle) - game->player->plane_y * sin(rotate_angle);
+	game->player->plane_y = old_planex * sin(rotate_angle) + game->player->plane_y * cos(rotate_angle);
+	
+}
+
+
 void player_game(t_game *game)
 {
 	if (game->key->w)
@@ -90,10 +109,10 @@ void player_game(t_game *game)
 		move_ad(game, -1);
 	if (game->key->d)
 		move_ad(game, 1);
-	// if (game->key->right)
-	// 	rotate_player(game, 1);
-	// if (game->key->left)
-	// 	rotate_player(game, -1);
+	if (game->key->right)
+		rotate_player(game, 1);
+	if (game->key->left)
+		rotate_player(game, -1);
 }
 
 int game_hook(void *param)

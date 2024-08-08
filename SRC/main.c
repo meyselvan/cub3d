@@ -15,6 +15,9 @@ void	game_init(t_game *game, char *str)
 	game->player = ft_calloc(sizeof(t_player), 1);
 	if (!game->player)
 		ft_error("Malloc doesn't work!");
+	game->raycast = ft_calloc(sizeof(t_raycast), 1);
+	if (!game->raycast)
+		ft_error("Malloc doesn't work!");
 	game->mapname = ft_strdup(str); // freelemeyi unutma
 	game->map_tail = NULL;
 	game->map_head = NULL;

@@ -58,6 +58,18 @@ typedef struct s_player
 	int			**tmp;
 }				t_player;
 
+typedef struct s_raycast
+{
+	double		camera_x;
+	double		camera_y;
+	double		raydir_x;
+	double		raydir_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+}				t_raycast;
+
 typedef struct s_game
 {
 	t_map		*map_head;
@@ -65,6 +77,7 @@ typedef struct s_game
 	t_images	*img;
 	t_keycode	*key;
 	t_player	*player;
+	t_raycast	*raycast;
 
 	void		*mlx;
 	void		*win;

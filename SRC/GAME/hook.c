@@ -56,16 +56,17 @@ void rotate_player(t_game *game, int direction)
 	old_planex = game->player->plane_x;
 	game->player->plane_x = game->player->plane_x * cos(rotate_angle) - game->player->plane_y * sin(rotate_angle);
 	game->player->plane_y = old_planex * sin(rotate_angle) + game->player->plane_y * cos(rotate_angle);
-	
+	printf("plane_x%f\n", game->player->plane_x);
+	printf("plane_y%f\n", game->player->plane_y);
 }
 
 
 void player_game(t_game *game)
 {
 	if (game->key->w)
-		move_ws(game, -1); // yukarı doğru harekette arryin indeksi düşüyor -1 olarak değiştirdim
-	if (game->key->s)
 		move_ws(game, 1);
+	if (game->key->s)
+		move_ws(game, -1);
 	if (game->key->a)
 		move_ad(game, -1);
 	if (game->key->d)
@@ -82,6 +83,8 @@ int game_hook(void *param)
 	(void) game;
 	
 	player_game(game);
+	draw_map2d(game);
+
 	// casting_rays(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
 	return (0);

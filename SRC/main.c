@@ -45,6 +45,7 @@ void player_loc(t_game *game, t_map *node)
 				game->loc_px = i;
 				game->loc_py = j;
 				game->playertype = tmp->line[i];
+				tmp->line[i] = '0'; // player loc alindiktan sonra alani yurunebilir alana (sifira) cevirdim
 				return ;
 			}
 			i++;

@@ -101,8 +101,10 @@ int	main(int argc, char **argv)
 			ft_error("Mlx doesn't work!");
 		game->win = mlx_new_window(game->mlx, SCREENWIDTH,
 	 		SCREENHEIGHT, "cub3d");
+
 		printf("row%d\n", game->row);
 		printf("col%d\n", game->col);
+		
 		init_player(game);
 		init_raycast(game);
 
@@ -112,8 +114,6 @@ int	main(int argc, char **argv)
 			printf("%s\n", game->map[i]);
 			i++;
 		}
-
-		draw_map2d(game);
 
 		mlx_loop_hook(game->mlx, game_hook, game);
 		mlx_hook(game->win, 3, 0, key_released, game);

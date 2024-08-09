@@ -29,3 +29,32 @@ void set_cf_texture(t_game *game)
 	game->img->ceiling_texture = calc_color(game, 'c');
 	game->img->floor_texture = calc_color(game, 'f');
 }
+
+void draw_floor_ceiling(t_game *game)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (i < SCREENHEIGHT / 2)
+	{
+		n = 0;
+		while (n < SCREENWIDTH)
+		{
+			game->mlx_data[i * SCREENWIDTH + n] = calc_color(game, 'c');
+			n++;
+		}
+		i++;
+	}
+	while (i < SCREENHEIGHT)
+	{
+		n = 0;
+		while (n < SCREENWIDTH)
+		{
+			game->mlx_data[i * SCREENWIDTH + n] = calc_color(game, 'f');
+			n++;
+		}
+		i++;
+	}
+}

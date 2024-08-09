@@ -54,8 +54,6 @@ typedef struct s_player
 	double		plane_x;
 	double		plane_y;
 	double		angle;
-
-	int			**tmp;
 }				t_player;
 
 typedef struct s_raycast
@@ -140,6 +138,7 @@ void init_player(t_game *game);
 
 int calc_color(t_game *game, char c_or_f);
 void set_cf_texture(t_game *game);
+void draw_floor_ceiling(t_game *game);
 void draw_map2d(t_game *game);
 
 

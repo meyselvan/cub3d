@@ -22,11 +22,11 @@ void move_ws(t_game *game, int direction)
 	else
 		c = 'c';
 
-	game->mlx_data[(SCREENWIDTH * (SCREENHEIGHT / 2 + game->loc_py)) + SCREENWIDTH / 2 + game->loc_px] = calc_color(game, c); // eski konumu boyama (bunu yorum satırına alıp daha net anlayabilirsiniz hareketi)
+	game->mlx_data[(SCREENWIDTH * (game->loc_py + 50)) + game->loc_px + 50] = calc_color(game, c); // eski konumu boyama (bunu yorum satırına alıp daha net anlayabilirsiniz hareketi)
 	game->loc_py = new_y;
 	printf("game->loc_px: %d\n", game->loc_px);
 	printf("game->loc_py: %d\n", game->loc_py);
-	game->mlx_data[(SCREENWIDTH * (SCREENHEIGHT / 2 + game->loc_py)) + SCREENWIDTH / 2 + game->loc_px] = 16777215; // beyaz noktanın ilerlemesi
+	game->mlx_data[(SCREENWIDTH * (game->loc_py + 50)) + game->loc_px + 50] = 16777215; // beyaz noktanın ilerlemesi
 
 }
 
@@ -43,11 +43,11 @@ void move_ad(t_game *game, int direction)
 	else
 		c = 'c';
 
-	game->mlx_data[(SCREENWIDTH * (SCREENHEIGHT / 2 + game->loc_py)) + SCREENWIDTH / 2 + game->loc_px] = calc_color(game, c); // eski konumu boyama (bunu yorum satırına alıp daha net anlayabilirsiniz hareketi)
+	game->mlx_data[(SCREENWIDTH * (game->loc_py + 50)) + game->loc_px + 50] = calc_color(game, c); // eski konumu boyama (bunu yorum satırına alıp daha net anlayabilirsiniz hareketi)
 	game->loc_px = new_x;
 	printf("game->loc_px: %d\n", game->loc_px);
 	printf("game->loc_py: %d\n", game->loc_py);
-	game->mlx_data[(SCREENWIDTH * (SCREENHEIGHT / 2 + game->loc_py)) + SCREENWIDTH / 2 + game->loc_px] = 16777215; // beyaz noktanın ilerlemesi
+	game->mlx_data[(SCREENWIDTH * (game->loc_py + 50)) + game->loc_px + 50] = 16777215; // beyaz noktanın ilerlemesi
 
 }
 

@@ -70,6 +70,11 @@ typedef struct s_raycast
 	int			step_y;
 	int			side1;
 	int			hit;
+
+	double		perp_dist;   // Oyuncudan duvara olan dik mesafe
+	int			height;    // Ekranda duvarın yüksekliği
+	int			start_y;   // Duvarın çizilmeye başlanacağı y koordinatı
+	int			end_y; 
 }				t_raycast;
 
 typedef struct s_game
@@ -149,6 +154,7 @@ void draw_floor_ceiling(t_game *game);
 //raycasting
 void	calc_ray(t_game *game, int x);
 void	dda(t_game *game);
+void	raydist(t_game *game);
 
 
 

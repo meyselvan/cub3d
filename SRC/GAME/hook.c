@@ -94,10 +94,16 @@ int game_hook(void *param)
 	{
 		calc_ray(game, x);
 		dda(game);
+		raydist(game);
+
 		// calc_wall(d->ch);
 		// map_line(d->ch, x);
 		x++;
 	}
+	printf("%f\n", game->raycast->perp_dist);
+	printf("%d\n", game->raycast->start_y);
+	printf("%d\n", game->raycast->end_y);
+	printf("%d\n", game->raycast->height);
 	mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
 	return (0);
 }

@@ -124,5 +124,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		ft_error("The number of arguments is more than necessary!");
+		
 	return (0);
 }

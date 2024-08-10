@@ -66,6 +66,10 @@ typedef struct s_raycast
 	double		sidedist_y;
 	double		deltadist_x;
 	double		deltadist_y;
+	int			step_x;
+	int			step_y;
+	int			side1;
+	int			hit;
 }				t_raycast;
 
 typedef struct s_game
@@ -131,15 +135,21 @@ int	exit_game(t_game *game);
 int key_pressed(int keycode, t_game *game);
 int key_released(int keycode, t_game *game);
 int game_hook(void *param);
+void init_screen(t_game *game);
 
-//raycasting
-void init_raycast(t_game *game);
+// init raycast
+void init_raycast(t_game *game, int x);
 void init_player(t_game *game);
 
+// draw floor ceiling
 int calc_color(t_game *game, char c_or_f);
 void set_cf_texture(t_game *game);
 void draw_floor_ceiling(t_game *game);
-void draw_map2d(t_game *game);
+
+//raycasting
+void	calc_ray(t_game *game, int x);
+void	dda(t_game *game);
+
 
 
 //move funcs

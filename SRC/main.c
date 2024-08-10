@@ -106,8 +106,8 @@ int	main(int argc, char **argv)
 		printf("row%d\n", game->row);
 		printf("col%d\n", game->col);
 		
+		init_screen(game);
 		init_player(game);
-		init_raycast(game);
 
 		int i = 0;
 		while (game->map[i])

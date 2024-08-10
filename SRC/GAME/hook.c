@@ -20,6 +20,7 @@ void move_ws(t_game *game, int direction)
 	if (game->map[(int)des_y][(int)game->player->x] == '0')
 		game->player->y = des_y;
 
+	game->mlx_data[(SCREENHEIGHT * (int)game->player->y * 130) + (int)game->player->x * 50] = 255;
 
 	printf("x%f\n", game->player->x);
 	printf("y%f\n", game->player->y);
@@ -36,6 +37,10 @@ void move_ad(t_game *game, int direction)
 		game->player->x = des_x;
 	if (game->map[(int)des_y][(int)game->player->x] == '0')
 		game->player->y = des_y;
+
+	game->mlx_data[(SCREENHEIGHT * (int)game->player->y * 130) + (int)game->player->x * 50] = 255;
+
+
 
 	printf("x%f\n", game->player->x);
 	printf("y%f\n", game->player->y);
@@ -79,13 +84,20 @@ void player_game(t_game *game)
 
 int game_hook(void *param)
 {
+	int	x;
 	t_game *game = (t_game *)param;
-	(void) game;
-	
-	player_game(game);
-	draw_map2d(game);
 
-	// casting_rays(game);
+	x = 0;
+	draw_floor_ceiling(game);
+	player_game(game);
+	while (x < SCREENHEIGHT)
+	{
+		calc_ray(game, x);
+		dda(game);
+		// calc_wall(d->ch);
+		// map_line(d->ch, x);
+		x++;
+	}
 	mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
 	return (0);
 }

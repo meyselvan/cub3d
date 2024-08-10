@@ -35,14 +35,15 @@ void init_player(t_game *game)
 	}
 }
 
-void init_raycast(t_game *game)
+void init_raycast(t_game *game, int x)
 {
-	game->img_ptr = mlx_new_image(game->mlx, SCREENWIDTH, SCREENHEIGHT);
 
-	game->mlx_data = (int *)mlx_get_data_addr(game->img_ptr, &game->pixel_bits, &game->line_bytes, &game->endian);
-	
-	draw_floor_ceiling(game);
-
-	if (!game->img_ptr)
-		ft_error("Invalid texture!");
+	game->raycast->camera_x = 2 * x / (double)SCREENWIDTH - 1;
+	game->raycast->raydir_x = game->player->dir_x + game->player->plane_x * game->raycast->camera_x;
+	game->raycast->raydir_y = game->player->dir_y + game->player->plane_y * game->raycast->camera_x;
+	game->loc_px = (int)game->player->x;
+	game->loc_py = (int)game->player->y;
+	game->raycast->deltadist_x = fabs(1 / game->raycast->raydir_x);
+	game->raycast->deltadist_y = fabs(1 / game->raycast->raydir_y);
+	game->raycast->hit = 0;
 }

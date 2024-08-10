@@ -42,7 +42,7 @@ void draw_floor_ceiling(t_game *game)
 		n = 0;
 		while (n < SCREENWIDTH)
 		{
-			game->mlx_data[i * SCREENWIDTH + n] = calc_color(game, 'c');
+			game->mlx_data[i * SCREENWIDTH + n] = game->img->ceiling_texture;
 			n++;
 		}
 		i++;
@@ -52,7 +52,7 @@ void draw_floor_ceiling(t_game *game)
 		n = 0;
 		while (n < SCREENWIDTH)
 		{
-			game->mlx_data[i * SCREENWIDTH + n] = calc_color(game, 'f');
+			game->mlx_data[i * SCREENWIDTH + n] = game->img->floor_texture;
 			n++;
 		}
 		i++;

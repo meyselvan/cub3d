@@ -13,8 +13,9 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# define SCREENHEIGHT 512 
+# define SCREENHEIGHT 512
 # define SCREENWIDTH 1280
+# define TILE 16
 
 typedef struct s_map
 {
@@ -72,10 +73,21 @@ typedef struct s_raycast
 	int			hit;
 
 	double		perp_dist;   // Oyuncudan duvara olan dik mesafe
-	int			height;    // Ekranda duvarın yüksekliği
-	int			start_y;   // Duvarın çizilmeye başlanacağı y koordinatı
+	int			height;      // Ekranda duvarın yüksekliği
+	int			start_y;     // Duvarın çizilmeye başlanacağı y koordinatı
 	int			end_y; 
 }				t_raycast;
+
+typedef struct s_textures
+{
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		w;
+	int		h;
+} t_textures;
 
 typedef struct s_game
 {
@@ -85,6 +97,8 @@ typedef struct s_game
 	t_keycode	*key;
 	t_player	*player;
 	t_raycast	*raycast;
+	t_textures	*walls[4];
+
 
 	void		*mlx;
 	void		*win;
@@ -123,33 +137,34 @@ int		same_str(const char *str1, char *str2);
 char	*fc_texture(char **liner);
 void	put_texture(t_images *img, char **liner);
 void	texture_init(t_game *game);
+void	set_walls(t_game *game);
 int		rgb_check(char *rgb);
-void add_map_node(t_game *game, char *line);
+void 	add_map_node(t_game *game, char *line);
 int		comma_count(char *str);
 void	xpm_name(char *str);
 void	map_check(t_game *game);
-void del_map_node_from_head(t_game *game);
-int ft_is_all_space(char *str);
-void del_map_node_from_tail(t_game *game);
-int ft_isspace(char c);
-int ft_is_all_space(char *str);
+void 	del_map_node_from_head(t_game *game);
+int 	ft_is_all_space(char *str);
+void 	del_map_node_from_tail(t_game *game);
+int		 ft_isspace(char c);
+int 	ft_is_all_space(char *str);
 void	fill_star(t_game *game);
 void	struct_to_array(t_game *game);
-void flood_fill(t_game *game);
-int	exit_game(t_game *game);
-int key_pressed(int keycode, t_game *game);
-int key_released(int keycode, t_game *game);
-int game_hook(void *param);
-void init_screen(t_game *game);
+void 	flood_fill(t_game *game);
+int		exit_game(t_game *game);
+int 	key_pressed(int keycode, t_game *game);
+int 	key_released(int keycode, t_game *game);
+int 	game_hook(void *param);
+void 	init_screen(t_game *game);
 
 // init raycast
-void init_raycast(t_game *game, int x);
-void init_player(t_game *game);
+void	init_raycast(t_game *game, int x);
+void 	init_player(t_game *game);
 
 // draw floor ceiling
-int calc_color(t_game *game, char c_or_f);
-void set_cf_texture(t_game *game);
-void draw_floor_ceiling(t_game *game);
+int 	calc_color(t_game *game, char c_or_f);
+void 	set_cf_texture(t_game *game);
+void	 draw_floor_ceiling(t_game *game);
 
 //raycasting
 void	calc_ray(t_game *game, int x);

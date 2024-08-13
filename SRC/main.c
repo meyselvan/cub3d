@@ -108,6 +108,7 @@ int	main(int argc, char **argv)
 		
 		init_screen(game);
 		init_player(game);
+		set_walls(game);
 
 		int i = 0;
 		while (game->map[i])

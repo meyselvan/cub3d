@@ -68,7 +68,7 @@ void	map_line(t_game *game, int x)
 	{
 		tex_y = (int)tex_pos & (TILE - 1);
 		tex_pos += step;
-		color = game->walls[game->raycast->side2]->addr[TILE * tex_y + game->raycast->tex_x];
+		color = game->walls[game->raycast->side2]->addr[(TILE * tex_y * 2) + game->raycast->tex_x * 2];
 		game->mlx_data[i * SCREENWIDTH + x] = color;
 		i++;
 	}

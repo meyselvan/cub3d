@@ -13,8 +13,8 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# define SCREENHEIGHT 512
-# define SCREENWIDTH 1280
+# define SCREENHEIGHT 1000
+# define SCREENWIDTH 1000
 # define TILE 16
 
 typedef struct s_map
@@ -75,7 +75,7 @@ typedef struct s_raycast
 
 	int			tex_x;
 	int			tex_y;
-	
+
 	double		perp_dist;   // Oyuncudan duvara olan dik mesafe
 	int			height;      // Ekranda duvarın yüksekliği
 	int			start_y;     // Duvarın çizilmeye başlanacağı y koordinatı

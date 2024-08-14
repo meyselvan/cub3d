@@ -94,10 +94,10 @@ int game_hook(void *param)
 	{
 		calc_ray(game, x);
 		dda(game);
-		raydist(game);
+		// raydist(game);
 
-		// calc_wall(d->ch);
-		// map_line(d->ch, x);
+		calc_wall(game);
+		map_line(game, x);
 		x++;
 	}
 	printf("perp_dist %f\n", game->raycast->perp_dist);

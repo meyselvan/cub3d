@@ -28,4 +28,3 @@ void	set_walls(t_game *game)
 	xpm_to_img(game, game->img->west_wall, 2);
 	xpm_to_img(game, game->img->east_wall, 3);
 }
-

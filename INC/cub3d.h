@@ -9,17 +9,18 @@
 # include <string.h> // for strerror
 # include "../MLX/mlx.h"
 # include "../LIBFT/libft.h"
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
 # define SCREENHEIGHT 1000
 # define SCREENWIDTH 1000
-# define TILE 16
+# define TILE 32
 
 typedef struct s_map
 {
-	char	*line;
+	char			*line;
 	struct s_map	*next;
 	struct s_map	*prev;
 }				t_map;

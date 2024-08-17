@@ -23,8 +23,8 @@ void xpm_to_img(t_game *game, char *path, int index)
 
 void	set_walls(t_game *game)
 {
-	xpm_to_img(game, game->img->north_wall, 0);
-	xpm_to_img(game, game->img->south_wall, 1);
-	xpm_to_img(game, game->img->west_wall, 2);
-	xpm_to_img(game, game->img->east_wall, 3);
+	xpm_to_img(game, game->img->north_wall, 3);
+	xpm_to_img(game, game->img->south_wall, 2);
+	xpm_to_img(game, game->img->west_wall, 0);
+	xpm_to_img(game, game->img->east_wall, 1);
 }

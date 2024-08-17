@@ -34,9 +34,9 @@ void	dda(t_game *game)
 			game->raycast->sidedist_x += game->raycast->deltadist_x;
 			game->loc_px += game->raycast->step_x;
 			if (game->raycast->step_x == 1)
-				game->raycast->side1 = 0;
-			else
 				game->raycast->side1 = 1;
+			else
+				game->raycast->side1 = 0;
 		}
 		else
 		{

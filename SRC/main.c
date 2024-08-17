@@ -100,23 +100,10 @@ int	main(int argc, char **argv)
 		game->mlx = mlx_init();
 		if (!game->mlx)
 			ft_error("Mlx doesn't work!");
-		game->win = mlx_new_window(game->mlx, SCREENWIDTH,
-	 		SCREENHEIGHT, "cub3d");
-
-		printf("row%d\n", game->row);
-		printf("col%d\n", game->col);
-		
+		game->win = mlx_new_window(game->mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		init_screen(game);
 		init_player(game);
 		set_walls(game);
-
-		int i = 0;
-		while (game->map[i])
-		{
-			printf("%s\n", game->map[i]);
-			i++;
-		}
-
 		mlx_loop_hook(game->mlx, game_hook, game);
 		mlx_hook(game->win, 3, 0, key_released, game);
 		mlx_hook(game->win, 2, 0, key_pressed, game);

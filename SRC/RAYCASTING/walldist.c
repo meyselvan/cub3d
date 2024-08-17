@@ -39,11 +39,10 @@ void	calc_wall(t_game *game)
 	wall_x = calc_dis(game);
 	wall_x -= floor(wall_x);
 	game->raycast->height = (SCREENHEIGHT / game->raycast->perp_dist);
-	game->raycast->side2 = game->raycast->side1;
 	game->raycast->tex_x = (int)(wall_x * (double)TILE);
-	if (((game->raycast->side1 == 0) || (game->raycast->side1 == 1)) && game->raycast->raydir_x < 0)
-		game->raycast->tex_x = TILE - game->raycast->tex_x - 1;
-	if (((game->raycast->side1 == 2) || (game->raycast->side1 == 3)) && game->raycast->raydir_y > 0)
+	// if (((game->raycast->side1 == 2) || (game->raycast->side1 == 3)) && game->raycast->raydir_x < 0)
+	// 	game->raycast->tex_x = TILE - game->raycast->tex_x - 1;
+	// if (((game->raycast->side1 == 0) || (game->raycast->side1 == 1)) && game->raycast->raydir_y > 0)
 		game->raycast->tex_x = TILE - game->raycast->tex_x - 1;
 	game->raycast->start_y = -game->raycast->height / 2 + SCREENHEIGHT / 2;
 	if (game->raycast->start_y < 0)
@@ -68,7 +67,7 @@ void	map_line(t_game *game, int x)
 	{
 		tex_y = (int)tex_pos & (TILE - 1);
 		tex_pos += step;
-		color = game->walls[game->raycast->side2]->addr[(TILE * tex_y * 2) + game->raycast->tex_x * 2];
+		color = game->walls[game->raycast->side1]->addr[(TILE * tex_y) + game->raycast->tex_x ];
 		game->mlx_data[i * SCREENWIDTH + x] = color;
 		i++;
 	}

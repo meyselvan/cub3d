@@ -1,4 +1,12 @@
-#**cub3d**
+# cub3d
+
+yapilacaklar
+
+- [ ]  Leak kontrolleri
+- [ ]  Genel bir free func kapanma durumlarinda calisacak
+- [ ]  32x32 guzel xpmler eklenebilir (icinde NULL color olmasin)
+- [ ]  Screen width ve height esit olmadiginda draw eksik oluyor cok buyuk sorun degil ama duzeltilebilir
+- [ ]  Fazla kodlar, yorum satirlari vs var bunlar temizlenebilir (debug printfleri haric)
 
 KAYNAKLAR
 
@@ -29,4 +37,6 @@ https://github.com/proteal/DOOM-Vis
 https://github.com/jwhitham/HeadlessDoom
 
 https://github.com/id-Software/DOOM
-https://medium.com/@rtailidounia/raycasting-in-cub3d-42-network-project-a-practical-tutorial-using-vectors-68eeb16b3de2
+
+https://medium.com/@rtailidounia/
+raycasting-in-cub3d-42-network-project-a-practical-tutorial-using-vectors-68eeb16b3de2

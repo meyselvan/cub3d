@@ -4,9 +4,10 @@ yapilacaklar
 
 - [ ]  Leak kontrolleri
 - [ ]  Genel bir free func kapanma durumlarinda calisacak
-- [ ]  32x32 guzel xpmler eklenebilir (icinde NULL color olmasin)
+- [ ]  64x64 guzel xpmler eklenebilir (icinde NULL color olmasin)
 - [ ]  Screen width ve height esit olmadiginda draw eksik oluyor cok buyuk sorun degil ama duzeltilebilir
 - [ ]  Fazla kodlar, yorum satirlari vs var bunlar temizlenebilir (debug printfleri haric)
+- [ ]  Norm
 
 KAYNAKLAR
 

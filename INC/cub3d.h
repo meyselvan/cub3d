@@ -16,7 +16,7 @@
 
 # define SCREENHEIGHT 1000
 # define SCREENWIDTH 1000
-# define TILE 32
+# define TILE 64
 
 typedef struct s_map
 {
@@ -61,7 +61,6 @@ typedef struct s_player
 typedef struct s_raycast
 {
 	double		camera_x;
-	double		camera_y;
 	double		raydir_x;
 	double		raydir_y;
 	double		sidedist_x;
@@ -71,7 +70,6 @@ typedef struct s_raycast
 	int			step_x;
 	int			step_y;
 	int			side1;
-	int			side2;
 	int			hit;
 
 	int			tex_x;
@@ -174,7 +172,7 @@ void	 draw_floor_ceiling(t_game *game);
 //raycasting
 void	calc_ray(t_game *game, int x);
 void	dda(t_game *game);
-void	raydist(t_game *game);
+// void	raydist(t_game *game);
 
 
 

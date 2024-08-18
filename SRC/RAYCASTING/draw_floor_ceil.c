@@ -10,17 +10,15 @@ int calc_color(t_game *game, char c_or_f)
         rgb = ft_split(game->img->ceiling, ',');
     else
         rgb = ft_split(game->img->floor, ',');
-
     i = 0;
     while (rgb[i])
         i++;
-
-    if (i != 3) // son degerin bos olma durumu kontrolu ama calismiyor split yuzunden
-        ft_error("Invalid RGB value\n");
-
+    if (i != 3)
+        ft_error("Invalid RGB value--\n");
     color = ft_atoi(rgb[0]) * 65536 + ft_atoi(rgb[1]) * 256 + ft_atoi(rgb[2]);
-    
-    free(rgb);
+	while (rgb[i])
+		free(rgb[i++]);
+	free(rgb);
     return (color);
 }
 

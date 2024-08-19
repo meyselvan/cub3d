@@ -1,7 +1,7 @@
-NO ./SRC/TEXTURES/bonewall.xpm
-WE ./SRC/TEXTURES/carpet.xpm
-SO ./SRC/TEXTURES/bonewall.xpm
-EA ./SRC/TEXTURES/floorboard.xpm
+NO ./SRC/TEXTURES/blue_bricks.xpm
+WE ./SRC/TEXTURES/red_bricks.xpm
+SO ./SRC/TEXTURES/stone.xpm
+EA ./SRC/TEXTURES/wood.xpm
 
 C 157, 215, 239
 F     12    ,31  , 10

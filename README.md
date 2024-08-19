@@ -4,7 +4,7 @@ yapilacaklar
 
 - [ ]  Leak kontrolleri
 - [ ]  Genel bir free func kapanma durumlarinda calisacak
-- [ ]  64x64 guzel xpmler eklenebilir (icinde NULL color olmasin)
+- [X]  64x64 guzel xpmler eklenebilir (icinde NULL color olmasin)
 - [ ]  Screen width ve height esit olmadiginda draw eksik oluyor cok buyuk sorun degil ama duzeltilebilir
 - [ ]  Fazla kodlar, yorum satirlari vs var bunlar temizlenebilir (debug printfleri haric)
 - [ ]  Norm
@@ -39,5 +39,4 @@ https://github.com/jwhitham/HeadlessDoom
 
 https://github.com/id-Software/DOOM
 
-https://medium.com/@rtailidounia/
-raycasting-in-cub3d-42-network-project-a-practical-tutorial-using-vectors-68eeb16b3de2
+https://medium.com/@rtailidounia/raycasting-in-cub3d-42-network-project-a-practical-tutorial-using-vectors-68eeb16b3de2

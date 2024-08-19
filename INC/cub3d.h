@@ -15,7 +15,7 @@
 # endif
 
 # define SCREENHEIGHT 1000
-# define SCREENWIDTH 1000
+# define SCREENWIDTH 1500
 # define TILE 64
 
 typedef struct s_map

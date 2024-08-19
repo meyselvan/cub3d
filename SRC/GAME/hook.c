@@ -100,7 +100,7 @@ int game_hook(void *param)
 	
 		print_info(game); // Debugging
 	
-	while (x < SCREENHEIGHT)
+	while (x < SCREENWIDTH)
 	{
 		calc_ray(game, x);
 		dda(game);

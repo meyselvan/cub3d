@@ -79,6 +79,43 @@ void count_row_col(t_game *game)
 	// printf("Row: %d Col: %d\n", game->row, game->col);
 }
 
+void images_free(t_images *img)
+{
+	if (img->south_wall)
+		free(img->south_wall);
+	if (img->north_wall)
+		free(img->north_wall);
+	if (img->west_wall)
+		free(img->west_wall);
+	if (img->east_wall)
+		free(img->east_wall);
+	if (img->floor)
+		free(img->floor);
+	if (img->ceiling)
+		free(img->ceiling);
+}
+void ft_free_map(t_map *head)
+{
+	t_map *tmp;
+
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp->line);
+		free(tmp);
+	}
+}
+void ft_struct_free(t_game *game)
+{
+	images_free(game->img);
+	free(game->img);
+	free(game->key);
+	free(game->player);
+	free(game->raycast);
+	ft_free_map(game->map_head);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -109,6 +146,10 @@ int	main(int argc, char **argv)
 		mlx_hook(game->win, 2, 0, key_pressed, game);
 		mlx_hook(game->win, 17, 0, exit_game, game);
 		mlx_loop(game->mlx);
+		ft_struct_free(game);
+		free(game->mapname);
+		free(game);
+		system("leaks cub3d");
 	}
 	else
 		ft_error("The number of arguments is more than necessary!");

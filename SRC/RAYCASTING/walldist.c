@@ -23,10 +23,16 @@ void	calc_wall(t_game *game)
 	wall_x -= floor(wall_x);
 	game->raycast->height = (SCREENHEIGHT / game->raycast->perp_dist);
 	game->raycast->tex_x = (int)(wall_x * (double)TILE);
-	if (((game->raycast->side1 == 2) || (game->raycast->side1 == 3)) && game->raycast->raydir_x < 0)
-		game->raycast->tex_x = TILE - game->raycast->tex_x - 1;
-	if (((game->raycast->side1 == 0) || (game->raycast->side1 == 1)) && game->raycast->raydir_y > 0)
-		game->raycast->tex_x = TILE - game->raycast->tex_x - 1;
+// Dokunun doğru yüzünü kullanmak için düzeltme yap
+if (game->raycast->side1 == 0 || game->raycast->side1 == 1)  // Y eksenindeki duvarlar
+{
+        game->raycast->tex_x = TILE - game->raycast->tex_x - 1;
+}
+else if (game->raycast->side1 == 2 || game->raycast->side1 == 3)  // X eksenindeki duvarlar
+{
+        game->raycast->tex_x = TILE - game->raycast->tex_x - 1;
+}
+
 	game->raycast->start_y = -game->raycast->height / 2 + SCREENHEIGHT / 2;
 	if (game->raycast->start_y < 0)
 		game->raycast->start_y = 0;

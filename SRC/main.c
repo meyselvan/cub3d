@@ -19,6 +19,7 @@ void	game_init(t_game *game, char *str)
 	if (!game->raycast)
 		ft_error("Malloc doesn't work!");
 	game->mapname = ft_strdup(str); // freelemeyi unutma
+	free(game->map_head);
 	game->map_tail = NULL;
 	game->map_head = NULL;
 	game->playercount = 0;
@@ -118,3 +119,4 @@ int	main(int argc, char **argv)
 		
 	return (0);
 }
+

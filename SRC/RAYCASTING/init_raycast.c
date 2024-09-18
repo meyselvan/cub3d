@@ -1,5 +1,23 @@
 #include "../../INC/cub3d.h"
 
+void	init_player_pos(t_game *game)
+{
+	if (game->playertype == 'W')
+	{
+		game->player->dir_x = -1;
+		game->player->dir_y = 0;
+		game->player->plane_x = 0;
+		game->player->plane_y = -0.66;
+	}
+	else if (game->playertype == 'E')
+	{
+		game->player->dir_x = 1;
+		game->player->dir_y = 0;
+		game->player->plane_x = 0;
+		game->player->plane_y = 0.66;
+	}
+}
+
 void	init_player(t_game *game)
 {
 	game->player->x = (double)game->loc_px;
@@ -18,20 +36,7 @@ void	init_player(t_game *game)
 		game->player->plane_x = -0.66;
 		game->player->plane_y = 0;
 	}
-	else if (game->playertype == 'W')
-	{
-		game->player->dir_x = -1;
-		game->player->dir_y = 0;
-		game->player->plane_x = 0;
-		game->player->plane_y = -0.66;
-	}
-	else if (game->playertype == 'E')
-	{
-		game->player->dir_x = 1;
-		game->player->dir_y = 0;
-		game->player->plane_x = 0;
-		game->player->plane_y = 0.66;
-	}
+	init_player_pos(game);
 }
 
 void	init_raycast(t_game *game, int x)

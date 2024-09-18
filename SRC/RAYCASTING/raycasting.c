@@ -1,28 +1,37 @@
 #include "../../INC/cub3d.h"
 
-void	calc_ray(t_game *game, int x)
+void	calc_side(t_game *game)
 {
-	init_raycast(game, x);
 	if (game->raycast->raydir_x < 0)
 	{
 		game->raycast->step_x = -1;
-		game->raycast->sidedist_x = (game->player->x - game->loc_px) * game->raycast->deltadist_x;
+		game->raycast->sidedist_x = (game->player->x - game->loc_px) \
+			* game->raycast->deltadist_x;
 	}
 	else
 	{
 		game->raycast->step_x = 1;
-		game->raycast->sidedist_x = (game->loc_px + 1.0 - game->player->x) * game->raycast->deltadist_x;
+		game->raycast->sidedist_x = (game->loc_px + 1.0 - game->player->x) \
+			* game->raycast->deltadist_x;
 	}
 	if (game->raycast->raydir_y < 0)
 	{
 		game->raycast->step_y = -1;
-		game->raycast->sidedist_y = (game->player->y - game->loc_py) * game->raycast->deltadist_y;
+		game->raycast->sidedist_y = (game->player->y - game->loc_py) \
+			* game->raycast->deltadist_y;
 	}
 	else
 	{
 		game->raycast->step_y = 1;
-		game->raycast->sidedist_y = (game->loc_py + 1.0 - game->player->y) * game->raycast->deltadist_y;
+		game->raycast->sidedist_y = (game->loc_py + 1.0 - game->player->y) \
+			* game->raycast->deltadist_y;
 	}
+}
+
+void	calc_ray(t_game *game, int x)
+{
+	init_raycast(game, x);
+	calc_side(game);
 }
 
 void	dda(t_game *game)

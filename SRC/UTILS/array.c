@@ -9,6 +9,7 @@ int	ft_arrlen(char **arr)
 		i++;
 	return (i);
 }
+
 int	same_str(const char *str1, char *str2)
 {
 	int	len1;

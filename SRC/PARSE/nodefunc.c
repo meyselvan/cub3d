@@ -72,6 +72,7 @@ void add_map_node(t_game *game, char *line)
         ft_error("Malloc doesn't work!");
         return;
 	}
+
     new_node->line = ft_strdup(line);
     if (!new_node->line)
     {

@@ -185,4 +185,7 @@ double	calc_dis(t_game *game);
 void	calc_wall(t_game *game);
 void	map_line(t_game *game, int x);
 
+void ft_free_struct(t_game *game);
+void ft_free_array(char **arr);
+
 #endif

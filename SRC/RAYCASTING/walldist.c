@@ -134,4 +134,3 @@ void	map_line(t_game *game, int x)
 // 	else
 // 		ft_draw_wall_texture(game, x, 3);
 // }
-

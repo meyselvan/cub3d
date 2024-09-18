@@ -16,10 +16,14 @@ void	fill_star(t_game *game)
 		if (game->row > len)
 		{
 			count = game->row - len;
+			if(line)
+				free(line);
 			line = ft_substr(game->map[i], 0, len);
 			tmp_len = len;
 			while (count + 1 > 0)
 			{
+				if (game->map[i])
+					free(game->map[i]);
 				game->map[i] = ft_strjoin(line, "*");
 				count--;
 				if (line)
@@ -30,6 +34,10 @@ void	fill_star(t_game *game)
 		}
 		i++;
 	}
+	if (line)
+		free(line);
+
+	
 
 }
 

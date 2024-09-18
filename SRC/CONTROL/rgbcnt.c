@@ -26,6 +26,7 @@ int rgb_check(char *rgb_tmp)
     i = 0;
     tmp = NULL;
     rgbx = 0;
+
     rgb = ft_substr(rgb_tmp, 0, ft_strlen(rgb_tmp) - 2);
     if (comma_count(rgb) != 2)
         return (0);
@@ -34,6 +35,8 @@ int rgb_check(char *rgb_tmp)
         s = i;
         while (rgb[i] != ',' && rgb[i] != '\0')
             i++;
+        if(tmp)
+            free(tmp);
         tmp = ft_substr(rgb, s, i - s);
         if (!tmp)
             return (0);
@@ -43,11 +46,12 @@ int rgb_check(char *rgb_tmp)
             return (0);
         }
         rgbx = atoi(tmp);
-        free(tmp);
         if (rgbx < 0 || rgbx > 255)
             return (0);
         if (rgb[i] == ',')
             i++;
     }
+    free(tmp);
+    free(rgb);
     return (1);
 }

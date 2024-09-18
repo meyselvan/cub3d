@@ -13,6 +13,8 @@ char	*fc_texture(char **liner)
 	tmp = liner[1];
 	while (i < arr_len - 1)
 	{
+		if (rgb)
+			free(rgb);
 		if (rgb == NULL)
 			rgb = ft_strdup(liner[i + 1]);
 		else
@@ -20,8 +22,8 @@ char	*fc_texture(char **liner)
 		tmp = rgb;
 		i++;
 	}
-	if (rgb_check(rgb) == 0)
-		return (NULL);
+	// if (rgb_check(rgb) == 0)
+	// 	return (NULL);
 	return (rgb);
 }
 
@@ -74,23 +76,32 @@ void	texture_init(t_game *game)
 	line = get_next_line(fd);
 	while (line)
 	{
+		
 		liner = ft_split(line, ' ');
 		put_texture(game->img, liner);
+		ft_free_array(liner);
 		if (all_texture(game->img) && true_texture(game->img))
 		{
+			if(line)
+				free(line);
 			line = get_next_line(fd);
 			while (line)
 			{
 				add_map_node(game, line);
+				if (line)
+					free(line);
 				line = get_next_line(fd);
 			}
 		}
 		else
 		{
-			free(line);
+			if (line)
+				free(line);
 			line = get_next_line(fd);
 		}
 	}
+	if (line)
+		free(line);
 	// if (!all_texture(game->img))
 	// 	ft_error("Missing texture!");
 	close(fd);

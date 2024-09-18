@@ -12,31 +12,31 @@ void	check_component(char *str, t_game *game)
 			game->playercount++;
 			i++;
 		}
-		else if (str[i] == '\n' || str[i] == '1' || str[i] == '0' || str[i] == ' ')
+		else if (str[i] == '\n' || str[i] == '1'
+			|| str[i] == '0' || str[i] == ' ')
 			i++;
 		else
 			ft_error("Invalid map component!");
 	}
 }
 
-void check_wall(char *str)
+void	check_wall(char *str)
 {
-    int i;
-    int len;
+	int	i;
+	int	len;
 
-    i = 0;
-    len = ft_strlen(str) - 1;
-
-    while (str[i] == ' ' && str[i] != '\0')
-        i++;
-    if (str[i] != '1')
-        ft_error("Invalid map wall!");
+	i = 0;
+	len = ft_strlen(str) - 1;
+	while (str[i] == ' ' && str[i] != '\0')
+		i++;
+	if (str[i] != '1')
+		ft_error("Invalid map wall!");
 	if (str[len] == '\n')
 		len--;
-    while (len >= i && str[len] == ' ')
-        len--;
-    if (len < i || str[len] != '1')
-        ft_error("Invalid map wall!");
+	while (len >= i && str[len] == ' ')
+		len--;
+	if (len < i || str[len] != '1')
+		ft_error("Invalid map wall!");
 }
 
 void	map_check(t_game *game)
@@ -45,11 +45,11 @@ void	map_check(t_game *game)
 
 	tmp = game->map_head;
 	while (tmp)
-	{	
+	{
 		if (same_str(tmp->line, "\n"))
 			ft_error("Invalid map component!");
 		check_component(tmp->line, game);
-		if(!ft_is_all_space(tmp->line))
+		if (!ft_is_all_space(tmp->line))
 			check_wall(tmp->line);
 		tmp = tmp->next;
 	}

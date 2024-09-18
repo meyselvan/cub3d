@@ -1,13 +1,12 @@
 #include "../../INC/cub3d.h"
 
-// game->walls free func yazilacak !!!
-
-void xpm_to_img(t_game *game, char *path, int index)
+void	xpm_to_img(t_game *game, char *path, int index)
 {
 	game->walls[index] = malloc(sizeof(t_textures));
 	if (!game->walls[index])
 		ft_error("Malloc doesn't work!");
-	game->walls[index]->img = mlx_xpm_file_to_image(game->mlx, path, &game->walls[index]->w, &game->walls[index]->h);
+	game->walls[index]->img = mlx_xpm_file_to_image(game->mlx, path,
+			&game->walls[index]->w, &game->walls[index]->h);
 	if (!game->walls[index]->img)
 		ft_error("Texture doesn't work!");
 	game->walls[index]->addr = \
@@ -17,7 +16,7 @@ void xpm_to_img(t_game *game, char *path, int index)
 	if (!game->walls[index]->addr)
 		ft_error("Texture doesn't work!");
 	if (!game->walls[index]->addr)
-		ft_error("Texture doesn't work!"); 
+		ft_error("Texture doesn't work!");
 }
 
 void	set_walls(t_game *game)

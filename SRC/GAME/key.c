@@ -1,6 +1,6 @@
 #include "../../INC/cub3d.h"
 
-int key_released(int keycode, t_game *game)
+int	key_released(int keycode, t_game *game)
 {
 	if (keycode == 13)
 		game->key->w = 0;
@@ -16,7 +16,8 @@ int key_released(int keycode, t_game *game)
 		game->key->right = 0;
 	return (0);
 }
-int key_pressed(int keycode, t_game *game)
+
+int	key_pressed(int keycode, t_game *game)
 {
 	if (keycode == 53)
 		exit_game(game);

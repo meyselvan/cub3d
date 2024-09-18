@@ -6,13 +6,29 @@ void	if_free(char *line)
 		free(line);
 }
 
+void	fill_line_with_stars(char **line, char **map_line, int count)
+{
+	int		tmp_len;
+
+	tmp_len = ft_strlen(*line);
+	while (count > 0)
+	{
+		if (*map_line)
+			free(*map_line);
+		*map_line = ft_strjoin(*line, "*");
+		count--;
+		if_free(*line);
+		tmp_len++;
+		*line = ft_substr(*map_line, 0, tmp_len);
+	}
+}
+
 void	fill_star(t_game *game)
 {
 	int		len;
 	int		i;
 	int		count;
 	char	*line;
-	int		tmp_len;
 
 	line = NULL;
 	i = 0;
@@ -24,17 +40,7 @@ void	fill_star(t_game *game)
 			count = game->row - len;
 			if_free(line);
 			line = ft_substr(game->map[i], 0, len);
-			tmp_len = len;
-			while (count + 1 > 0)
-			{
-				if (game->map[i])
-					free(game->map[i]);
-				game->map[i] = ft_strjoin(line, "*");
-				count--;
-				if_free(line);
-				tmp_len++;
-				line = ft_substr(game->map[i], 0, tmp_len);
-			}
+			fill_line_with_stars(&line, &game->map[i], count);
 		}
 		i++;
 	}

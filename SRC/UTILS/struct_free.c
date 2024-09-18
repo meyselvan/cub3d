@@ -2,8 +2,8 @@
 
 void	free_map(t_game *game)
 {
-	t_map *tmp;
-	t_map *tmp2;
+	t_map	*tmp;
+	t_map	*tmp2;
 
 	tmp = game->map_head;
 	while (tmp)
@@ -47,7 +47,7 @@ void	ft_free_walls(t_game *game)
 	}
 }
 
-void ft_free_struct(t_game *game)
+void	ft_free_struct(t_game *game)
 {
 	free_map(game);
 	free_img(game->img);
@@ -63,7 +63,7 @@ void ft_free_struct(t_game *game)
 	free(game->img_ptr);
 }
 
-void ft_free_array(char **arr)
+void	ft_free_array(char **arr)
 {
 	int	i;
 

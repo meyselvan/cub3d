@@ -1,15 +1,15 @@
 #include "../../INC/cub3d.h"
 
-int ft_isspace(char c)
+int	ft_isspace(char c)
 {
 	if (c == ' ' || c == '\n')
 		return (1);
 	return (0);
 }
 
-int ft_is_all_space(char *str)
+int	ft_is_all_space(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

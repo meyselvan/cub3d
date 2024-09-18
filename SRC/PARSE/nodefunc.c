@@ -91,7 +91,6 @@ void	map_head_control(t_game *game, t_map *new_node, t_map *tmp)
 	}
 }
 
-
 void	add_map_node(t_game *game, char *line)
 {
 	t_map	*new_node;

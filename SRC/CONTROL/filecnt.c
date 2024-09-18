@@ -8,7 +8,6 @@ void	can_be_opened(char *str)
 	if (i < 0)
 		ft_error("The specified file path is invalid or not found!");
 	close(i);
-
 }
 
 void	xpm_name(char *str)
@@ -50,5 +49,3 @@ void	map_name(char *str)
 	else
 		ft_error("Invalid file name, try again.");
 }
-
-

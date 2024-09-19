@@ -31,6 +31,7 @@ int	exit_game(t_game *game)
 
 void	player_game(t_game *game)
 {
+	print_info(game);
 	if (game->key->w)
 		move_ws(game, 1);
 	if (game->key->s)
@@ -47,21 +48,31 @@ void	player_game(t_game *game)
 
 int	game_hook(void *param)
 {
-	int		x;
-	t_game	*game;
+    int		x;                // Ekranın yatay eksenindeki her piksel sütunu için sayaç
+    t_game	*game;            // Oyun durumunu içeren yapı
 
-	game = (t_game *)param;
-	x = 0;
-	draw_floor_ceiling(game);
-	player_game(game);
-	while (x < SCREENWIDTH)
-	{
-		calc_ray(game, x);
-		dda(game);
-		calc_wall(game);
-		map_line(game, x);
-		x++;
-	}
-	mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
-	return (0);
+    // parametreyi t_game yapısına dönüştür
+    game = (t_game *)param;
+
+    x = 0;                    // x ekseninde başlangıç değeri 0
+    draw_floor_ceiling(game);  // Zemin ve tavanı çiz
+
+    player_game(game);         // Oyuncu ile ilgili işlemleri yap (örneğin, hareketi hesapla)
+
+    // Ekranın tüm genişliği boyunca her bir piksel sütununu işle
+    while (x < SCREENWIDTH)
+    {
+        calc_ray(game, x);     // Işın izleme hesaplaması yap (her sütun için)
+        dda(game);             // DDA algoritmasını kullanarak ışının duvarla nerede kesiştiğini bul
+        calc_wall(game);       // Duvar yüksekliği ve görüntüsünü hesapla
+        map_line(game, x);     // Hesaplanan sütunu ekrana çiz
+        x++;                   // Bir sonraki sütuna geç
+    }
+
+    // Hesaplanan görüntüyü pencereye yerleştir (görüntüyü ekrana çiz)
+    mlx_put_image_to_window(game->mlx, game->win, game->img_ptr, 0, 0);
+
+    // İşlevi başarılı bir şekilde tamamla (0 döndür)
+    return (0);
 }
+

@@ -42,6 +42,7 @@ int	loop_rgb(char *rgb, char *tmp, int rgbx, int i)
 		if (rgb[i] == ',')
 			i++;
 	}
+	free(tmp);
 	return (1);
 }
 

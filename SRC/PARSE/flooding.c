@@ -6,33 +6,17 @@ void	if_free(char *line)
 		free(line);
 }
 
-void	fill_line_with_stars(char **line, char **map_line, int count)
-{
-	int		tmp_len;
-
-	tmp_len = ft_strlen(*line);
-	while (count > 0)
-	{
-		if (*map_line)
-			free(*map_line);
-		*map_line = ft_strjoin(*line, "*");
-		count--;
-		if_free(*line);
-		tmp_len++;
-		*line = ft_substr(*map_line, 0, tmp_len);
-	}
-}
-
 void	fill_star(t_game *game)
 {
 	int		len;
 	int		i;
 	int		count;
 	char	*line;
+	int		tmp_len;
 
 	line = NULL;
 	i = 0;
-	while (i <= game->col + 1)
+	while (i < game->col)
 	{
 		len = ft_strlen(game->map[i]);
 		if (game->row > len)
@@ -40,7 +24,17 @@ void	fill_star(t_game *game)
 			count = game->row - len;
 			if_free(line);
 			line = ft_substr(game->map[i], 0, len);
-			fill_line_with_stars(&line, &game->map[i], count);
+			tmp_len = len;
+			while (count + 1 > 0)
+			{
+				if (game->map[i])
+					free(game->map[i]);
+				game->map[i] = ft_strjoin(line, "*");
+				count--;
+				if_free(line);
+				tmp_len++;
+				line = ft_substr(game->map[i], 0, tmp_len);
+			}
 		}
 		i++;
 	}
@@ -75,10 +69,10 @@ void	flood_fill(t_game *game)
 
 	j = 0;
 	tmp = game->map;
-	while (j <= game->col)
+	while (j < game->col)
 	{
 		i = 0;
-		while (i <= game->row)
+		while (i < game->row)
 		{
 			if (tmp[j][i] == '0' || tmp[j][i] == 'N' || tmp[j][i] == 'S'
 				|| tmp[j][i] == 'W' || tmp[j][i] == 'E')

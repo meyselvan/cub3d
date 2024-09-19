@@ -39,15 +39,16 @@ void	struct_to_array(t_game *game)
 	int		len;
 
 	tmp = game->map_head;
-	k = 0;
+	k = 1;
 	len = 0;
 	if (game->col > 0)
-		game->map = ft_calloc(sizeof(char *), game->col + 1);
+		game->map = ft_calloc(sizeof(char *), game->col + 3);
 	if (game->map == NULL)
 		ft_error("Malloc doesn't work!");
-	while (tmp && game->col > k)
+	game->map[0] = ft_strdup("*");
+	while (tmp && game->col >= k)
 	{
-		if (game->col == k + 1)
+		if (game->col == k)
 			game->map[k] = ft_strdup(tmp->line);
 		else
 		{
@@ -57,4 +58,5 @@ void	struct_to_array(t_game *game)
 		tmp = tmp->next;
 		k++;
 	}
+	game->map[k] = ft_strdup("*");
 }

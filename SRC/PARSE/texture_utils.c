@@ -17,8 +17,8 @@ void	check_num(char **liner)
 {
 	int	i;
 	int	j;
-	int count;
-	int flag;
+	int	count;
+	int	flag;
 
 	i = 1;
 	count = 0;
@@ -39,7 +39,7 @@ void	check_num(char **liner)
 		}
 		i++;
 	}
-	if(count != 3)
+	if (count != 3)
 	{
 		ft_free_array(liner);
 		ft_error("RGB value is invalid!");

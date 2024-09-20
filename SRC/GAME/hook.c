@@ -9,7 +9,6 @@ int	exit_game(t_game *game)
 
 void	player_game(t_game *game)
 {
-	// print_info(game);
 	if (game->key->w)
 		move_ws(game, 1);
 	if (game->key->s)

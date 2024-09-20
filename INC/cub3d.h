@@ -184,5 +184,6 @@ char	*fc_texture(char **liner);
 void	put_texture(t_images *img, char **liner);
 int		all_texture(t_images *img);
 int		true_texture(t_images *img);
+void	control_line(t_game *game);
 
 #endif

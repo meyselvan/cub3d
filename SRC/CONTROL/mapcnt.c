@@ -56,3 +56,24 @@ void	map_check(t_game *game)
 	if (game->playercount != 1)
 		ft_error("Invalid player components!");
 }
+
+void	control_line(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->map[0][i])
+	{
+		if (game->map[0][i] != '1' && game->map[0][i] != ' ' && game->map[0][i] != '\n')
+			ft_error("Invalid map wall!");
+		i++;
+	}
+	i = 0;
+	while (game->map[game->col - 1][i])
+	{
+		if (game->map[game->col - 1][i] != '1' && game->map[game->col - 1][i] != ' ' && game->map[game->col - 1][i] != '\n')
+			ft_error("Invalid map wall!");
+		i++;
+	}
+
+}

@@ -23,7 +23,11 @@ char	*fc_texture(char **liner)
 		i++;
 	}
 	if (!rgb_check(rgb))
+	{
+		if (rgb)
+			free(rgb);
 		ft_error("RGB value is invalid!");
+	}
 	return (rgb);
 }
 

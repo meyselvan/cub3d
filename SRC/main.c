@@ -86,6 +86,7 @@ void	init_cub(t_game *game, char **argv)
 	player_loc(game, game->map_head);
 	count_row_col(game);
 	struct_to_array(game);
+	control_line(game);
 	fill_star(game);
 	flood_fill(game);
 	game->mlx = mlx_init();

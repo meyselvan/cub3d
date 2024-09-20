@@ -32,7 +32,7 @@ void	fill_star(t_game *game)
 
 	line = NULL;
 	i = 0;
-	while (i <= game->col + 1)
+	while (i < game->col)
 	{
 		len = ft_strlen(game->map[i]);
 		if (game->row > len)
@@ -75,10 +75,10 @@ void	flood_fill(t_game *game)
 
 	j = 0;
 	tmp = game->map;
-	while (j <= game->col)
+	while (j < game->col)
 	{
 		i = 0;
-		while (i <= game->row)
+		while (i < game->row)
 		{
 			if (tmp[j][i] == '0' || tmp[j][i] == 'N' || tmp[j][i] == 'S'
 				|| tmp[j][i] == 'W' || tmp[j][i] == 'E')

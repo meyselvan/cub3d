@@ -13,33 +13,42 @@ void	check_comp(char *rgb)
 	}
 }
 
+int	check_line(char *line)
+{
+	int	j;
+	int	flag;
+	int	count;
+
+	j = 0;
+	flag = 0;
+	count = 0;
+	while (line[j] != '\0')
+	{
+		if (ft_isdigit(line[j]) && flag == 0)
+		{
+			flag = 1;
+			count++;
+		}
+		if (line[j] == ',')
+			flag = 0;
+		j++;
+	}
+	return (count);
+}
+
 void	check_num(char **liner)
 {
 	int	i;
-	int	j;
-	int	count;
-	int	flag;
+	int	total_count;
 
 	i = 1;
-	count = 0;
+	total_count = 0;
 	while (liner[i])
 	{
-		flag = 0;
-		j = 0;
-		while (liner[i][j] != '\0')
-		{
-			if (ft_isdigit(liner[i][j]) && flag == 0)
-			{
-				flag = 1;
-				count++;
-			}
-			if (liner[i][j] == ',')
-				flag = 0;
-			j++;
-		}
+		total_count += check_line(liner[i]);
 		i++;
 	}
-	if (count != 3)
+	if (total_count != 3)
 	{
 		ft_free_array(liner);
 		ft_error("RGB value is invalid!");
@@ -100,21 +109,4 @@ void	put_texture(t_images *img, char **liner)
 		img->ceiling = fc_texture(liner, arr_len);
 	else
 		ft_error("Texture is invalid!");
-}
-
-int	all_texture(t_images *img)
-{
-	if (img->north_wall && img->south_wall && img->west_wall
-		&& img->east_wall && img->floor && img->ceiling)
-		return (1);
-	return (0);
-}
-
-int	true_texture(t_images *img)
-{
-	xpm_name(img->north_wall);
-	xpm_name(img->south_wall);
-	xpm_name(img->west_wall);
-	xpm_name(img->east_wall);
-	return (1);
 }

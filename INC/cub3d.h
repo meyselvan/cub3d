@@ -180,8 +180,6 @@ void	move_ws(t_game *game, int direction);
 void	move_ad(t_game *game, int direction);
 void	rotate_player(t_game *game, int direction);
 
-char	*fc_texture(char **liner);
-void	put_texture(t_images *img, char **liner);
 int		all_texture(t_images *img);
 int		true_texture(t_images *img);
 void	control_line(t_game *game);

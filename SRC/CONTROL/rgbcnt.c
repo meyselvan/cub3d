@@ -32,6 +32,7 @@ int	loop_rgb(char *rgb, char *tmp, int rgbx, int i)
 		if (!tmp)
 			return (0);
 		rgbx = atoi(tmp);
+		printf("rgbx: %d\n", rgbx);
 		if (i - s > 3 || rgbx < 0 || rgbx > 255)
 		{
 			free(tmp);
@@ -52,7 +53,7 @@ int	rgb_check(char *rgb_tmp)
 
 	tmp = NULL;
 	rgbx = 0;
-	rgb = ft_substr(rgb_tmp, 0, ft_strlen(rgb_tmp) - 2);
+	rgb = ft_substr(rgb_tmp, 0, ft_strlen(rgb_tmp) - 1);
 	if (comma_count(rgb) != 2)
 	{
 		free(rgb);

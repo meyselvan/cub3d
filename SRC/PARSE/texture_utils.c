@@ -1,5 +1,18 @@
 #include "../../INC/cub3d.h"
 
+void	check_comp(char *rgb)
+{
+	int	i;
+
+	i = 0;
+	while (rgb[i] != '\0')
+	{
+		if (!ft_isdigit(rgb[i]) && rgb[i] != ',' && rgb[i] != '\n')
+			ft_error("RGB value is invalid!");
+		i++;
+	}
+}
+
 char	*fc_texture(char **liner)
 {
 	int		i;
@@ -22,6 +35,7 @@ char	*fc_texture(char **liner)
 		tmp = rgb;
 		i++;
 	}
+	check_comp(rgb);
 	if (!rgb_check(rgb))
 	{
 		if (rgb)

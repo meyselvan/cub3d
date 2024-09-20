@@ -27,10 +27,7 @@ void	map_copy(t_game *game)
 		i++;
 	}
 	game->copy_map[i] = NULL;
-
 }
-
-#include <stdio.h>
 
 void	fill_control(t_game *game)
 {
@@ -52,7 +49,6 @@ void	fill_control(t_game *game)
 		i++;
 	}
 }
-
 
 void	double_map(t_game *game)
 {

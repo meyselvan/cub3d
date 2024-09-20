@@ -78,7 +78,6 @@ void	count_row_col(t_game *game)
 	}
 	game->col = j;
 }
-#include <stdio.h>
 
 void	init_cub(t_game *game, char **argv)
 {

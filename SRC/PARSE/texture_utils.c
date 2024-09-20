@@ -33,6 +33,8 @@ void	check_num(char **liner)
 				flag = 1;
 				count++;
 			}
+			if (liner[i][j] == ',')
+				flag = 0;
 			j++;
 		}
 		i++;
@@ -40,6 +42,7 @@ void	check_num(char **liner)
 	if(count != 3)
 	{
 		ft_free_array(liner);
+		printf("count = %d\n", count);
 		ft_error("RGB value is invalid!");
 	}
 }

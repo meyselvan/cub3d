@@ -117,7 +117,6 @@ int	main(int argc, char **argv)
 		mlx_loop(game->mlx);
 		ft_free_struct(game);
 		free(game);
-		system("leaks cub3d");
 	}
 	else
 		ft_error("The number of arguments is more than necessary!");

@@ -64,7 +64,8 @@ void	control_line(t_game *game)
 	i = 0;
 	while (game->map[0][i])
 	{
-		if (game->map[0][i] != '1' && game->map[0][i] != ' ' && game->map[0][i] != '\n')
+		if (game->map[0][i] != '1' && game->map[0][i] != ' '
+			&& game->map[0][i] != '\n')
 			ft_error("Invalid map wall!");
 		i++;
 	}

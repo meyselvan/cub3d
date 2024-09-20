@@ -42,24 +42,21 @@ void	check_num(char **liner)
 	if(count != 3)
 	{
 		ft_free_array(liner);
-		printf("count = %d\n", count);
 		ft_error("RGB value is invalid!");
 	}
 }
 
-char	*fc_texture(char **liner)
+char	*fc_texture(char **liner, int arr_len)
 {
 	int		i;
-	int		arr_len;
 	char	*rgb;
 	char	*tmp;
 
-	i = 0;
-	arr_len = ft_arrlen(liner);
+	i = -1;
 	rgb = NULL;
 	tmp = liner[1];
 	check_num(liner);
-	while (i < arr_len - 1)
+	while (++i < arr_len - 1)
 	{
 		if (rgb)
 			free(rgb);
@@ -68,13 +65,11 @@ char	*fc_texture(char **liner)
 		else
 			rgb = ft_strjoin(tmp, liner[i + 1]);
 		tmp = rgb;
-		i++;
 	}
 	check_comp(rgb);
 	if (!rgb_check(rgb))
 	{
-		if (rgb)
-			free(rgb);
+		if_free(rgb);
 		ft_error("RGB value is invalid!");
 	}
 	return (rgb);
@@ -82,6 +77,9 @@ char	*fc_texture(char **liner)
 
 void	put_texture(t_images *img, char **liner)
 {
+	int		arr_len;
+
+	arr_len = ft_arrlen(liner);
 	if (same_str(liner[0], "\n"))
 		return ;
 	else if (same_str(liner[0], "NO")
@@ -97,9 +95,9 @@ void	put_texture(t_images *img, char **liner)
 		&& ft_arrlen(liner) == 2 && !img->east_wall)
 		img->east_wall = ft_substr(liner[1], 0, ft_strlen(liner[1]) - 1);
 	else if (same_str(liner[0], "F") && !img->floor)
-		img->floor = fc_texture(liner);
+		img->floor = fc_texture(liner, arr_len);
 	else if (same_str(liner[0], "C") && !img->ceiling)
-		img->ceiling = fc_texture(liner);
+		img->ceiling = fc_texture(liner, arr_len);
 	else
 		ft_error("Texture is invalid!");
 }

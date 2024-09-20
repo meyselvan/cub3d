@@ -32,7 +32,6 @@ int	loop_rgb(char *rgb, char *tmp, int rgbx, int i)
 		if (!tmp)
 			return (0);
 		rgbx = atoi(tmp);
-		printf("rgbx: %d\n", rgbx);
 		if (i - s > 3 || rgbx < 0 || rgbx > 255)
 		{
 			free(tmp);

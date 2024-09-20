@@ -1,12 +1,11 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdlib.h> // for malloc
+# include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h> // for open
+# include <fcntl.h>
 # include <math.h>
-# include <stdio.h> // for perror
-# include <string.h> // for strerror
+# include <string.h>
 # include "../MLX/mlx.h"
 # include "../LIBFT/libft.h"
 
@@ -134,7 +133,7 @@ int		ft_error(char *msg);
 void	map_name(char *str);
 int		ft_arrlen(char **arr);
 int		same_str(const char *str1, char *str2);	
-char	*fc_texture(char **liner);
+char	*fc_texture(char **liner, int arr_len);
 void	put_texture(t_images *img, char **liner);
 void	texture_init(t_game *game);
 void	set_walls(t_game *game);
@@ -183,5 +182,6 @@ void	rotate_player(t_game *game, int direction);
 int		all_texture(t_images *img);
 int		true_texture(t_images *img);
 void	control_line(t_game *game);
+void	if_free(char *line);
 
 #endif

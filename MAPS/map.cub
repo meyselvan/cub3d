@@ -4,7 +4,7 @@ SO       ./SRC/TEXTURES/eagle.xpm
 EA ./SRC/TEXTURES/wood.xpm
 
 C 255, 51, 51
-F     102    ,0  , 102
+F     10    2     ,0  , 102
 
 1111111111111111111111
 1000000000000000000001

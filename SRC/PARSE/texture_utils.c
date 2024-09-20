@@ -13,6 +13,37 @@ void	check_comp(char *rgb)
 	}
 }
 
+void	check_num(char **liner)
+{
+	int	i;
+	int	j;
+	int count;
+	int flag;
+
+	i = 1;
+	count = 0;
+	while (liner[i])
+	{
+		flag = 0;
+		j = 0;
+		while (liner[i][j] != '\0')
+		{
+			if (ft_isdigit(liner[i][j]) && flag == 0)
+			{
+				flag = 1;
+				count++;
+			}
+			j++;
+		}
+		i++;
+	}
+	if(count != 3)
+	{
+		ft_free_array(liner);
+		ft_error("RGB value is invalid!");
+	}
+}
+
 char	*fc_texture(char **liner)
 {
 	int		i;
@@ -24,6 +55,7 @@ char	*fc_texture(char **liner)
 	arr_len = ft_arrlen(liner);
 	rgb = NULL;
 	tmp = liner[1];
+	check_num(liner);
 	while (i < arr_len - 1)
 	{
 		if (rgb)

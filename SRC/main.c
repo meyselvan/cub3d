@@ -78,6 +78,7 @@ void	count_row_col(t_game *game)
 	}
 	game->col = j;
 }
+#include <stdio.h>
 
 void	init_cub(t_game *game, char **argv)
 {
@@ -89,6 +90,7 @@ void	init_cub(t_game *game, char **argv)
 	control_line(game);
 	fill_star(game);
 	flood_fill(game);
+	double_map(game);
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_error("Mlx doesn't work!");

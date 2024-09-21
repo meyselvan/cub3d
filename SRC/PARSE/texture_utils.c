@@ -84,27 +84,6 @@ char	*fc_texture(char **liner, int arr_len)
 	return (rgb);
 }
 
-int	newliner(char **liner, int arr_len)
-{
-	int	i;
-	char	*tmp;
-
-	i = 0;
-	if (arr_len == 3)
-	{
-		tmp = ft_strdup(liner[1]);
-		if (same_str(liner[2], "\n"))
-		{
-			if_free(liner[1]);
-			liner[1] = ft_strjoin(tmp, "\n");
-			if_free(tmp);
-			return (1);
-		}
-		if_free(tmp);
-	}
-	return (0);
-}
-#include <stdio.h>
 void	put_texture(t_images *img, char **liner)
 {
 	int		arr_len;
@@ -112,17 +91,17 @@ void	put_texture(t_images *img, char **liner)
 	arr_len = ft_arrlen(liner);
 	if (same_str(liner[0], "\n"))
 		return ;
-	else if (same_str(liner[0], "NO")
-		&& (ft_arrlen(liner) == 2  || newliner(liner, arr_len)) && !img->north_wall)
+	else if (same_str(liner[0], "NO") && (ft_arrlen(liner) == 2
+			|| newliner(liner, arr_len)) && !img->north_wall)
 		img->north_wall = ft_substr(liner[1], 0, ft_strlen(liner[1]) - 1);
-	else if (same_str(liner[0], "SO")
-		&& (ft_arrlen(liner) == 2  || newliner(liner, arr_len)) && !img->south_wall)
+	else if (same_str(liner[0], "SO") && (ft_arrlen(liner) == 2
+			|| newliner(liner, arr_len)) && !img->south_wall)
 		img->south_wall = ft_substr(liner[1], 0, ft_strlen(liner[1]) - 1);
-	else if (same_str(liner[0], "WE")
-		&& (ft_arrlen(liner) == 2  || newliner(liner, arr_len)) && !img->west_wall)
+	else if (same_str(liner[0], "WE") && (ft_arrlen(liner) == 2
+			|| newliner(liner, arr_len)) && !img->west_wall)
 		img->west_wall = ft_substr(liner[1], 0, ft_strlen(liner[1]) - 1);
-	else if (same_str(liner[0], "EA")
-		&& (ft_arrlen(liner) == 2  || newliner(liner, arr_len)) && !img->east_wall)
+	else if (same_str(liner[0], "EA") && (ft_arrlen(liner) == 2
+			|| newliner(liner, arr_len)) && !img->east_wall)
 		img->east_wall = ft_substr(liner[1], 0, ft_strlen(liner[1]) - 1);
 	else if (same_str(liner[0], "F") && !img->floor)
 		img->floor = fc_texture(liner, arr_len);

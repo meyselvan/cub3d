@@ -184,5 +184,6 @@ void	control_line(t_game *game);
 void	if_free(char *line);
 void	double_map(t_game *game);
 void	control_newline(t_game *game);
+int		newliner(char **liner, int arr_len);
 
 #endif

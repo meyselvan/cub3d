@@ -1,9 +1,11 @@
-NO ./SRC/TEXTURES/blue_bricks.xpm
-WE ./SRC/TEXTURES/red_bricks.xpm
-SO ./SRC/TEXTURES/stone.xpm
-EA ./SRC/TEXTURES/wood.xpm
+NO      ./SRC/TEXTURES/blue_bricks.xpm   
+ WE      ./SRC/TEXTURES/red_bricks.xpm   
 
 C     32    ,   123, 12
+      SO      ./SRC/TEXTURES/stone.xpm
+
+EA     ./SRC/TEXTURES/wood.xpm   
+
 F     12    ,31  , 10
 
  1111111111111111111111
@@ -11,9 +13,4 @@ F     12    ,31  , 10
 1100000000000100000111
 11111111111111111111  
    111111111111N0111111 
-11111111111111111   
-
-
-
-
-
+11111111111111111

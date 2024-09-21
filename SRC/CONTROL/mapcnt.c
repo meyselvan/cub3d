@@ -79,3 +79,16 @@ void	control_line(t_game *game)
 		i++;
 	}
 }
+
+void	control_newline(t_game *game)
+{
+	t_map	*tmp;
+
+	tmp = game->map_tail;
+	while (tmp)
+	{
+		if (same_str(tmp->line, "\n"))
+			ft_error("Invalid map component!");
+		tmp = tmp->prev;
+	}
+}

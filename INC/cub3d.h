@@ -185,5 +185,6 @@ int		true_texture(t_images *img);
 void	control_line(t_game *game);
 void	if_free(char *line);
 void	double_map(t_game *game);
+void	control_newline(t_game *game);
 
 #endif

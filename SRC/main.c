@@ -25,6 +25,7 @@ void	game_init(t_game *game, char *str)
 	game->playercount = 0;
 	texture_init(game);
 	del_map_node_from_head(game);
+	control_newline(game);
 	del_map_node_from_tail(game);
 }
 

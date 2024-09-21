@@ -1,6 +1,6 @@
 NO ./SRC/TEXTURES/blue_bricks.xpm
 WE           ./SRC/TEXTURES/carpet.xpm
-SO       ./SRC/TEXTURES/eagle.xpm
+SO       ./SRC/TEXTURES/carpet.xpm
 EA ./SRC/TEXTURES/wood.xpm
 
 C 255, 51, 51

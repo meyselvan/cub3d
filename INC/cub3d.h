@@ -167,8 +167,6 @@ void	draw_floor_ceiling(t_game *game);
 void	calc_ray(t_game *game, int x);
 void	dda(t_game *game);
 
-void	rotate_player(t_game *game, int direction);
-
 double	calc_dis(t_game *game);
 void	calc_wall(t_game *game);
 void	map_line(t_game *game, int x);

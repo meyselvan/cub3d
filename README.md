@@ -8,6 +8,7 @@ yapilacaklar
 - [ ]  makefile yorum satırları ve makefile derleme kısmı gozden gecirilebilir
 - [ ]  .cub gibi gizli dosyalar calıstırılmayacak
 - [ ]  norm
+- [ ]  makefilea mlx icin curl eklenebilir
 
 KAYNAKLAR
 

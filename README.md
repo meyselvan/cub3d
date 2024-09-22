@@ -2,12 +2,12 @@
 
 yapilacaklar
 
-- [X]  Leak kontrolleri
-- [X]  Genel bir free func kapanma durumlarinda calisacak
-- [X]  64x64 guzel xpmler eklenebilir (icinde NULL color olmasin)
-- [X]  Screen width ve height esit olmadiginda draw eksik oluyor cok buyuk sorun degil ama duzeltilebilir
-- [X]  Fazla kodlar, yorum satirlari vs var bunlar temizlenebilir (debug printfleri haric)
-- [X]  Norm
+- [ ]  isim cub3D yapılacak
+- [ ]  NO-SO ve WE-EA yer degistirilecek, kübün kuzeyi ve guneyine dogru baskılar basılması icin
+- [ ]  texture degisilebilir
+- [ ]  makefile yorum satırları ve makefile derleme kısmı gozden gecirilebilir
+- [ ]  .cub gibi gizli dosyalar calıstırılmayacak
+- [ ]  norm
 
 KAYNAKLAR
 

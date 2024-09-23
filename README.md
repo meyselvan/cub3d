@@ -2,13 +2,13 @@
 
 yapilacaklar
 
-- [ ]  isim cub3D yapılacak
-- [ ]  NO-SO ve WE-EA yer degistirilecek, kübün kuzeyi ve guneyine dogru baskılar basılması icin
-- [ ]  texture degisilebilir
-- [ ]  makefile yorum satırları ve makefile derleme kısmı gozden gecirilebilir
-- [ ]  .cub gibi gizli dosyalar calıstırılmayacak
-- [ ]  norm
-- [ ]  makefilea mlx icin curl eklenebilir
+- [X]  isim cub3D yapılacak
+- [X]  NO-SO ve WE-EA yer degistirilecek, kübün kuzeyi ve guneyine dogru baskılar basılması icin
+- [X]  texture degisilebilir
+- [X]  makefile yorum satırları ve makefile derleme kısmı gozden gecirilebilir
+- [X]  .cub gibi gizli dosyalar calıstırılmayacak
+- [X]  norm
+- [X]  makefilea mlx icin curl eklenebilir
 
 KAYNAKLAR
 

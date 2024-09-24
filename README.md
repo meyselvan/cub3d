@@ -6,7 +6,7 @@ yapilacaklar
 - [X]  NO-SO ve WE-EA yer degistirilecek, kübün kuzeyi ve guneyine dogru baskılar basılması icin
 - [X]  texture degisilebilir
 - [X]  makefile yorum satırları ve makefile derleme kısmı gozden gecirilebilir
-- [X]  .cub gibi gizli dosyalar calıstırılmayacak
+- [ ]  .cub gibi gizli dosyalar calıstırılmayacak(.......cub de aynı zamanda)
 - [X]  norm
 - [X]  makefilea mlx icin curl eklenebilir
 

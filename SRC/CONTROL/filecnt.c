@@ -27,23 +27,21 @@ void	xpm_name(char *str)
 	else
 		ft_error("Invalid file name, try again.");
 }
-void	is_hidden(char *str)
+
+char	is_hidden(char *str)
 {
-	int	i;
 	int	len;
 
-	i = 0;
-	len = ft_strlen(str) - 1;
-	while (str[len] != '/' && len > 0 )
+	len = ft_strlen(str) - 5;
+	while (str[len])
 	{
-		while (str[len] == '.' )
-		{
-			if(str[len - 1] == '/' || len == 0)
-				ft_error("Hidden file name, don't be shy.");
-			len--;
-		}
+		if (len == 0)
+			return (str[len]);
+		if (str[len] == '/')
+			return (str[len + 1]);
 		len--;
 	}
+	return (0);
 }
 
 void	map_name(char *str)
@@ -57,11 +55,13 @@ void	map_name(char *str)
 		if (str[len - 1] != 'b' && str[len - 2] != 'u'
 			&& str[len - 3] != 'c' && str[len - 4] != '.')
 			ft_error("Invalid file extension name, try again");
+		if (str[len - 5] == '/' || str[len - 5] == '\0'
+			|| is_hidden(str) == '.')
+			ft_error("Hidden file name, try again");
 		i = open(str, O_RDONLY);
 		if (i < 0)
 			ft_error("The specified file path is invalid or not found!");
 		close(i);
-		is_hidden(str);
 	}
 	else
 		ft_error("Invalid file name, try again.");

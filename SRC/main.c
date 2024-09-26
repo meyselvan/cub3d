@@ -94,7 +94,7 @@ void	init_cub(t_game *game, char **argv)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_error("Mlx doesn't work!");
-	game->win = mlx_new_window(game->mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
+	game->win = mlx_new_window(game->mlx, SCREENWIDTH, SCREENHEIGHT, "cub3D");
 	init_screen(game);
 	init_player(game);
 	set_walls(game);

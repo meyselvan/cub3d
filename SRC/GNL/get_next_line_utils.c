@@ -1,4 +1,4 @@
-#include "../../INC/cub3d.h"
+#include "../../INC/cub3D.h"
 
 char	*ft_gnl_strjoin(char *dest, char *src)
 {

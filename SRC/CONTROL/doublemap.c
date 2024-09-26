@@ -1,4 +1,4 @@
-#include "../../INC/cub3d.h"
+#include "../../INC/cub3D.h"
 
 void	fill(t_game *game, int x, int y, char to_fill)
 {

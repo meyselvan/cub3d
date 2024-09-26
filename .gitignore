@@ -2,7 +2,7 @@
 .vs_code/*
 LIBFT/*.o
 MLX/*.o
-cub3d
+cub3D
 OBJ
 .vscode/
 .vscode/c_cpp_properties.json

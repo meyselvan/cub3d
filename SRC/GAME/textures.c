@@ -1,4 +1,4 @@
-#include "../../INC/cub3d.h"
+#include "../../INC/cub3D.h"
 
 void	xpm_to_img(t_game *game, char *path, int index)
 {

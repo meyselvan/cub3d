@@ -1,4 +1,4 @@
-#include "../../INC/cub3d.h"
+#include "../../INC/cub3D.h"
 
 char	*true_case(t_game *game, int fd, char *line)
 {

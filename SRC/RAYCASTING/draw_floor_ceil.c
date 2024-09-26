@@ -1,4 +1,4 @@
-#include "../../INC/cub3d.h"
+#include "../../INC/cub3D.h"
 
 int	calc_color(t_game *game, char c_or_f)
 {

@@ -5,7 +5,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
-# include <string.h>
 # include "../MLX/mlx.h"
 # include "../LIBFT/libft.h"
 
@@ -13,9 +12,17 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# define SCREENHEIGHT 1000
-# define SCREENWIDTH 1500
-# define TILE 64
+# ifndef SCREENHEIGHT
+#  define SCREENHEIGHT 1000
+# endif
+
+# ifndef SCREENWIDTH
+#  define SCREENWIDTH 1500
+# endif
+
+# ifndef TILE
+#  define TILE 64
+# endif
 
 typedef struct s_map
 {
@@ -155,28 +162,21 @@ int		key_pressed(int keycode, t_game *game);
 int		key_released(int keycode, t_game *game);
 int		game_hook(void *param);
 void	init_screen(t_game *game);
-
 void	init_raycast(t_game *game, int x);
 void	init_player(t_game *game);
-
 int		calc_color(t_game *game, char c_or_f);
 void	set_cf_texture(t_game *game);
 void	draw_floor_ceiling(t_game *game);
-
 void	calc_ray(t_game *game, int x);
 void	dda(t_game *game);
-
 double	calc_dis(t_game *game);
 void	calc_wall(t_game *game);
 void	map_line(t_game *game, int x);
-
 void	ft_free_struct(t_game *game);
 void	ft_free_array(char **arr);
-
 void	move_ws(t_game *game, int direction);
 void	move_ad(t_game *game, int direction);
 void	rotate_player(t_game *game, int direction);
-
 int		all_texture(t_images *img);
 int		true_texture(t_images *img);
 void	control_line(t_game *game);

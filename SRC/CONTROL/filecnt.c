@@ -57,7 +57,7 @@ void	map_name(char *str)
 			ft_error("Invalid file extension name, try again");
 		if (str[len - 5] == '/' || str[len - 5] == '\0'
 			|| is_hidden(str) == '.')
-			ft_error("Hidden file name, try again");
+			ft_error("Hidden file name, don't be shy (˶ᵔ ᵕ ᵔ˶)");
 		i = open(str, O_RDONLY);
 		if (i < 0)
 			ft_error("The specified file path is invalid or not found!");
